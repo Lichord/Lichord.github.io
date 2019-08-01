@@ -4,22 +4,24 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
-    <title>VS code 使用 | Banana</title>
+    <title>Banana</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Lixian">
     
-    <meta name="description" content="VS code 使用
-预览Markdown:
-ctrl+shift+p 选择Markdown open preview…
-ctrl+shift+v
+    <meta name="description" content="session
+session分为有状态session，无状态sessionRedis
+单线程，原子性
+可以持久化，RDB，AOF机制
+支持集群
+可以做消息队列
 
+缺点
 
-安装插件
-ctrl + P 然后输入 &amp;gt;ext install
-
-
-替换文字：ctrl+f 在弹出的查找框中点开左边箭头">
+持久化代价高
+耗内存Redis-session好处
+用户信息存储到Redis缓存中，形成无状态session
+便于扩展，当单体应">
     
     
     
@@ -75,15 +77,15 @@ ctrl + P 然后输入 &amp;gt;ext install
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2019/07/11/vscode/" title="VS code 使用" itemprop="url">VS code 使用</a>
+      <a href="/2019/08/01/Redis/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="Lixian">Lixian</a>
     </p>
   <p class="article-time">
-    <time datetime="2019-07-11T11:29:51.000Z" itemprop="datePublished">2019-07-11</time>
-    更新日期:<time datetime="2019-07-12T12:28:04.370Z" itemprop="dateModified">2019-07-12</time>
+    <time datetime="2019-08-01T09:18:39.096Z" itemprop="datePublished">2019-08-01</time>
+    更新日期:<time datetime="2019-07-29T05:39:10.530Z" itemprop="dateModified">2019-07-29</time>
     
   </p>
 </header>
@@ -92,41 +94,34 @@ ctrl + P 然后输入 &amp;gt;ext install
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VS-code-使用"><span class="toc-number">1.</span> <span class="toc-text">VS code 使用</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#session"><span class="toc-number">1.</span> <span class="toc-text">session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis"><span class="toc-number">2.</span> <span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-session好处"><span class="toc-number">3.</span> <span class="toc-text">Redis-session好处</span></a></li></ol>
 		</div>
 		
-		<h1 id="VS-code-使用"><a href="#VS-code-使用" class="headerlink" title="VS code 使用"></a>VS code 使用</h1><ul>
-<li>预览Markdown:<ul>
-<li>ctrl+shift+p 选择Markdown open preview…</li>
-<li>ctrl+shift+v</li>
+		<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><ul>
+<li>session分为有状态session，无状态session<h4 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h4></li>
+<li>单线程，原子性</li>
+<li>可以持久化，RDB，AOF机制</li>
+<li>支持集群</li>
+<li>可以做消息队列</li>
 </ul>
-</li>
-<li>安装插件<ul>
-<li>ctrl + P 然后输入 &gt;ext install</li>
-</ul>
-</li>
-<li>替换文字：ctrl+f 在弹出的查找框中点开左边箭头</li>
+<p>缺点</p>
+<ul>
+<li>持久化代价高</li>
+<li>耗内存<h4 id="Redis-session好处"><a href="#Redis-session好处" class="headerlink" title="Redis-session好处"></a>Redis-session好处</h4></li>
+<li>用户信息存储到Redis缓存中，形成无状态session</li>
+<li>便于扩展，当单体应用扩展到集群会相当方便</li>
+<li>便于权限验证<br>#### </li>
 </ul>
   
 	</div>
 		<footer class="article-footer clearfix">
 
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/vscode/">vscode</a>
-  </div>
-
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/tools/">tools</a>
-</div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2019/07/11/vscode/" data-title="VS code 使用 | Banana" data-tsina="" class="share clearfix">
+  <div data-url="http://yoursite.com/2019/08/01/Redis/" data-title="Banana" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -136,18 +131,18 @@ ctrl + P 然后输入 &amp;gt;ext install
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2019/07/11/odoo学习/" title="Odoo学习">
+ <a href="/2019/08/01/vue+axios登陆/" title="">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Odoo学习</span>
+  (no title)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2019/07/11/Axios/"  title="Axios">
+<a href="/2019/08/01/hello-world/"  title="Hello World">
  <strong>NEXT:</strong><br/> 
- <span>Axios
+ <span>Hello World
 </span>
 </a>
 </div>
@@ -164,7 +159,7 @@ ctrl + P 然后输入 &amp;gt;ext install
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VS-code-使用"><span class="toc-number">1.</span> <span class="toc-text">VS code 使用</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#session"><span class="toc-number">1.</span> <span class="toc-text">session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis"><span class="toc-number">2.</span> <span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-session好处"><span class="toc-number">3.</span> <span class="toc-text">Redis-session好处</span></a></li></ol>
   </div>
 
 <div id="asidepart">
