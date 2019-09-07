@@ -1,0 +1,411 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  
+    <title>香蕉弦定李</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Lixian">
+    
+    <meta name="description" content="win10的系统，笔记本一个只有250G的固态，剩余60G空间。只有一个C盘，担心哪天系统完蛋安装的软件数据都没了，毕竟那么多的开发工具要重装还是很费时。
+同时想给电脑再装一个linux双系统,磁盘空间不够，所以得加一个硬盘。
+加硬盘以防万一还是需要把数据都备份一下，所以先给磁盘分区，将数据放在D盘">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="香蕉弦定李" title="香蕉弦定李"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="香蕉弦定李">香蕉弦定李</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/08/01/电脑踩坑记录/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Lixian">Lixian</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2019-08-01T14:13:34.270Z" itemprop="datePublished">2019-08-01</time>
+    更新日期:<time datetime="2019-08-01T15:17:30.810Z" itemprop="dateModified">2019-08-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘分区"><span class="toc-number">1.</span> <span class="toc-text">磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-网上解决方案-尝试对我无效"><span class="toc-number">1.1.</span> <span class="toc-text">1.网上解决方案(尝试对我无效)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用软件分区-成功"><span class="toc-number">1.2.</span> <span class="toc-text">用软件分区(成功)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决迁移软件问题"><span class="toc-number">1.3.</span> <span class="toc-text">解决迁移软件问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结论"><span class="toc-number">1.4.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
+		</div>
+		
+		<ul>
+<li>win10的系统，笔记本一个只有250G的固态，剩余60G空间。只有一个C盘，担心哪天系统完蛋安装的软件数据都没了，毕竟那么多的开发工具要重装还是很费时。</li>
+<li>同时想给电脑再装一个linux双系统,磁盘空间不够，所以得加一个硬盘。</li>
+<li>加硬盘以防万一还是需要把数据都备份一下，所以先给磁盘分区，将数据放在D盘</li>
+</ul>
+<h3 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h3><p>按照win10默认的分区方法，可压缩的空间只有2G</p>
+<h4 id="1-网上解决方案-尝试对我无效"><a href="#1-网上解决方案-尝试对我无效" class="headerlink" title="1.网上解决方案(尝试对我无效)"></a>1.网上解决方案(尝试对我无效)</h4><p>估计是可能有些文件占用了较后的存储位置，导致空间不连续，无法合并成为新的空间。</p>
+<ol>
+<li><p>打开”这台电脑“，在想压缩的分区上右击选择”属性“，在打开的对话框中选择”工具“页，尝试了“检查”和“优化”，将文件存储优化。</p>
+</li>
+<li><p>在桌面上的“这台电脑”上右单击，选择“属性”，在左侧菜单中选择“系统保护”，在弹出框中选中要压缩的分区，点击“配置”，在弹出框中选择“禁用系统保护”后点击“确定”，并重启系统。</p>
+</li>
+<li><p>可能是有文件正在使用，系统无法调整并将其空间腾出，就尝试关闭虚拟内存。<br>在“这台电脑”上右击，选择“属性”，在弹出框中选择左侧菜单“高级系统设置”，在弹出框的高级分页下，点击第一个性能框中的”设置“按钮，在弹出框中选择”高级”页，点击虚拟内存分页右下角的“更改”按钮。在弹出的标题为“虚拟内存”的对话框中，取消“自动管理所有驱动器的分页文件大小”前面的勾，同时选择”无分页文件“，点击右侧的”设置“，后”确认“，根据提示，重启系统。</p>
+</li>
+</ol>
+<h4 id="用软件分区-成功"><a href="#用软件分区-成功" class="headerlink" title="用软件分区(成功)"></a>用软件分区(成功)</h4><ul>
+<li>下载了傲然分区助手，按照教程分区成功，但是分区过程非常漫长</li>
+<li>分区之后想尝试一下把C盘的软件迁移到D盘，于是下载了一个腾讯电脑管家来帮助我迁移</li>
+<li>经过再次漫长的等待,显示将Anaconda迁移成功了，但是当我想要开启Anaconda，黑屏了，原因未知，重启之后就没事了</li>
+<li>于是我打算先备份好我的数据到D盘再处理软件的事情</li>
+</ul>
+<h4 id="解决迁移软件问题"><a href="#解决迁移软件问题" class="headerlink" title="解决迁移软件问题"></a>解决迁移软件问题</h4><ul>
+<li>先确保软件是否的确在电脑上安装成功，我在命令行输入<code>conda --version</code>是无效命令，所以先将之前配置的环境变量改成现有目录，改变环境变量之后再输入命令就能看到版本了。</li>
+<li>原本安装在C盘的快捷方式都无效了，安装目录下又找不到程序入口<blockquote>
+<p>解决：找到Ananconda的安装目录下的Menu文件夹，命令行打开，输入<code>python .\Lib\_nsis.py mkmenus</code>就会重新创建快捷方式了</p>
+</blockquote>
+</li>
+</ul>
+<p>参考：<a href="https://blog.csdn.net/qq_42580947/article/details/90671836" target="_blank" rel="noopener">https://blog.csdn.net/qq_42580947/article/details/90671836</a></p>
+<ul>
+<li>打开Spyder的快捷方式，报错：This application failed to start because it could not find or load the Qt platfrom plugin “windows” in “”.Reinstalling the application may fix this problem</li>
+<li>按照网上方法将\Anaconda3\Library\plugins下的platform文件夹拷贝到\Anaconda下重新打开，没有反应</li>
+<li>我突然想看一下其他没有移动的软件是否存在问题，打开Pycharm，IDEA都报错failed to create jvm error code -4</li>
+<li>网上说是内存不足导致的，我想可能是压缩完之后碎片比较多造成的</li>
+<li>此外，我在查找解决方案的过程中，Chrome和IE浏览器都频繁卡死，以及出现程序错误的报错信息，Chrome也提示内存不足，无法打开页面，甚至造成电脑重启。</li>
+<li>打开此电脑-&gt;左击C盘-&gt;点击窗口上方的管理-&gt;优化</li>
+<li>对C盘进行优化之后，IDEA，PYcharm，还有Anaconda的软件都能打开了</li>
+<li>想到之前为了分区修改了系统的配置，我又重新将配置改回以前的样子。对电脑进行重启。</li>
+<li>暂时问题是解决了，但是虽然软件安装目录变了，配置文件等等数据文件却都还在C盘，系统崩了一样麻烦，所以迁移软件并不是什么好的方法，完全迁移时间成本太高</li>
+</ul>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ul>
+<li>如果电脑运行的好好的，最好就不要去乱搞</li>
+<li>很多事情如果在一开始就做好，比之后再去修正是会轻松超多的，但是一开始的时候是根本就不知道怎么做才是好的呀</li>
+<li>生命在于折腾</li>
+<li>暂时没有发现其他的问题，上帝保佑不要再出现什么问题了</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2019/08/01/电脑踩坑记录/" data-title="香蕉弦定李" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/08/09/JavaEE基础精简版/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/08/01/电脑系统问题/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘分区"><span class="toc-number">1.</span> <span class="toc-text">磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-网上解决方案-尝试对我无效"><span class="toc-number">1.1.</span> <span class="toc-text">1.网上解决方案(尝试对我无效)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用软件分区-成功"><span class="toc-number">1.2.</span> <span class="toc-text">用软件分区(成功)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决迁移软件问题"><span class="toc-number">1.3.</span> <span class="toc-text">解决迁移软件问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结论"><span class="toc-number">1.4.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/Spring/" title="Spring">Spring<sup>2</sup></a></li>
+		
+			<li><a href="/categories/github-page/" title="github page">github page<sup>1</sup></a></li>
+		
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		
+			<li><a href="/categories/javaweb/" title="javaweb">javaweb<sup>4</sup></a></li>
+		
+			<li><a href="/categories/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/categories/odoo/" title="odoo">odoo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/tools/" title="tools">tools<sup>1</sup></a></li>
+		
+			<li><a href="/categories/小程序/" title="小程序">小程序<sup>1</sup></a></li>
+		
+			<li><a href="/categories/工具/" title="工具">工具<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Spring/" title="Spring">Spring<sup>2</sup></a></li>
+		
+			<li><a href="/tags/SpringBoot/" title="SpringBoot">SpringBoot<sup>2</sup></a></li>
+		
+			<li><a href="/tags/SpringMVC/" title="SpringMVC">SpringMVC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/axios/" title="axios">axios<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/java/" title="java">java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/javaweb/" title="javaweb">javaweb<sup>4</sup></a></li>
+		
+			<li><a href="/tags/odoo-web-python/" title="odoo web python">odoo web python<sup>1</sup></a></li>
+		
+			<li><a href="/tags/vscode/" title="vscode">vscode<sup>1</sup></a></li>
+		
+			<li><a href="/tags/小程序/" title="小程序">小程序<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2019 
+		
+		<a href="http://yoursite.com" target="_blank" title="Lixian">Lixian</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:""};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-143755758-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

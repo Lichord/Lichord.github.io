@@ -1,0 +1,409 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  
+    <title>香蕉弦定李</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Lixian">
+    
+    <meta name="description" content="存储引擎
+InnoDB和MyISAM最常用
+
+InnoDB
+是 MySQL 默认的事务型存储引擎，只有在需要它不支持的特性时，才考虑使用其它存储引擎。12345678910111213DELETE FROM messages WHERE create &amp;lt; DATE_SUB(NOW(), INT">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="香蕉弦定李" title="香蕉弦定李"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="香蕉弦定李">香蕉弦定李</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/08/20/Mysql索引底层实现/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Lixian">Lixian</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2019-08-20T13:08:00.186Z" itemprop="datePublished">2019-08-20</time>
+    更新日期:<time datetime="2019-08-21T06:46:29.428Z" itemprop="dateModified">2019-08-21</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储引擎"><span class="toc-number">1.</span> <span class="toc-text">存储引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB"><span class="toc-number">1.1.</span> <span class="toc-text">InnoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM"><span class="toc-number">1.2.</span> <span class="toc-text">MyISAM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较"><span class="toc-number">1.3.</span> <span class="toc-text">比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引"><span class="toc-number">2.</span> <span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM索引实现"><span class="toc-number">2.1.</span> <span class="toc-text">MyISAM索引实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB索引实现"><span class="toc-number">2.2.</span> <span class="toc-text">InnoDB索引实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用InnoDB主键应该知道的事项"><span class="toc-number">2.2.1.</span> <span class="toc-text">使用InnoDB主键应该知道的事项</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#聚簇索引的优点有："><span class="toc-number">2.2.1.1.</span> <span class="toc-text">聚簇索引的优点有：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#聚簇索引的缺点有："><span class="toc-number">2.2.1.2.</span> <span class="toc-text">聚簇索引的缺点有：</span></a></li></ol></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h2 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h2><ul>
+<li>InnoDB和MyISAM最常用</li>
+</ul>
+<h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h3><ul>
+<li>是 MySQL 默认的事务型存储引擎，只有在需要它不支持的特性时，才考虑使用其它存储引擎。<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> messages <span class="keyword">WHERE</span> <span class="keyword">create</span> &lt; <span class="keyword">DATE_SUB</span>(<span class="keyword">NOW</span>(), <span class="built_in">INTERVAL</span> <span class="number">3</span> <span class="keyword">MONTH</span>);</span><br><span class="line">rows_affected = 0</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line"> rows_affected = do_query(</span><br><span class="line">  <span class="string">"DELETE FROM messages WHERE create &lt; DATE_SUB(NOW(), INTERVAL 3 MONTH) LIMIT 10000"</span>)</span><br><span class="line">&#125; <span class="keyword">while</span> rows_affected &gt; <span class="number">0</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tab</span><br><span class="line"><span class="keyword">JOIN</span> tag_post <span class="keyword">ON</span> tag_post.tag_id=tag.id</span><br><span class="line"><span class="keyword">JOIN</span> post <span class="keyword">ON</span> tag_post.post_id=post.id</span><br><span class="line"><span class="keyword">WHERE</span> tag.tag=<span class="string">'mysql'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag <span class="keyword">WHERE</span> tag=<span class="string">'mysql'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag_post <span class="keyword">WHERE</span> tag_id=<span class="number">1234</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> post <span class="keyword">WHERE</span> post.id <span class="keyword">IN</span> (<span class="number">123</span>,<span class="number">456</span>,<span class="number">567</span>,<span class="number">9098</span>,<span class="number">8904</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>实现了四个标准的隔离级别，默认级别是可重复读（REPEATABLE READ）。在可重复读隔离级别下，通过多版本并发<br>控制（MVCC）+ 间隙锁（Next-Key Locking）防止幻影读。<br>主索引是聚簇索引，在索引中保存了数据，从而避免直接读取磁盘，因此对查询性能有很大的提升。<br>内部做了很多优化，包括从磁盘读取数据时采用的可预测性读、能够加快读操作并且自动创建的自适应哈希索引、能<br>够加速插入操作的插入缓冲区等。<br>支持真正的在线热备份。其它存储引擎不支持在线热备份，要获取一致性视图需要停止对所有表的写入，而在读写混<br>合场景中，停止写入可能也意味着停止读取。</p>
+<h3 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h3><p>设计简单，数据以紧密格式存储。对于只读数据，或者表比较小、可以容忍修复操作，则依然可以使用它。<br>提供了大量的特性，包括压缩表、空间数据索引等。<br>不支持事务。<br>不支持行级锁，只能对整张表加锁，读取时会对需要读到的所有表加共享锁，写入时则对表加排它锁。但在表有读取<br>操作的同时，也可以往表中插入新的记录，这被称为并发插入（CONCURRENT INSERT）。<br>可以手工或者自动执行检查和修复操作，但是和事务恢复以及崩溃恢复不同，可能导致一些数据丢失，而且修复操作<br>是非常慢的。<br>如果指定了 DELAY_KEY_WRITE 选项，在每次修改执行完成时，不会立即将修改的索引数据写入磁盘，而是会写到内<br>存中的键缓冲区，只有在清理键缓冲区或者关闭表的时候才会将对应的索引块写入磁盘。这种方式可以极大的提升写<br>入性能，但是在数据库或者主机崩溃时会造成索引损坏，需要执行修复操作。</p>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>事务：InnoDB 是事务型的，可以使用 Commit 和 Rollback 语句。<br>并发：MyISAM 只支持表级锁，而 InnoDB 还支持行级锁。<br>外键：InnoDB 支持外键。<br>备份：InnoDB 支持在线热备份。<br>崩溃恢复：MyISAM 崩溃后发生损坏的概率比 InnoDB 高很多，而且恢复的速度也更慢。<br>其它特性：MyISAM 支持压缩表和空间数据索引。</p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><ul>
+<li>在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式不同</li>
+</ul>
+<h3 id="MyISAM索引实现"><a href="#MyISAM索引实现" class="headerlink" title="MyISAM索引实现"></a>MyISAM索引实现</h3><ul>
+<li>使用B+Tree作为索引结构</li>
+<li>MYISAM的索引文件只保存数据记录的行号，然后通过此行号回表查询需要的数据</li>
+<li>MYISAM主键索引与辅助索引的差别只在于主键索引key唯一</li>
+<li>MyISAM的索引方式索引和数据存放是分开的，非聚集”的，所以也叫做非聚集索引。<h3 id="InnoDB索引实现"><a href="#InnoDB索引实现" class="headerlink" title="InnoDB索引实现"></a>InnoDB索引实现</h3></li>
+<li>使用B+Tree作为索引结构</li>
+<li>InnoDB支持聚簇索引（主键索引），聚簇索引就是表，所以InnoDB不用像MyISAM那样需要独立的行存储。也就是说，InnoDB的数据文件本身就是索引文件。</li>
+<li>InnoDB的二级索引和聚簇索引很不相同。InnoDB的二级索引的叶子节点存储的不是行号（行指针），而是主键列。</li>
+<li>这种策略的缺点是二级索引需要两次索引查找，第一次在二级索引中查找主键，第二次在聚簇索引中通过主键查找需要的数据行。</li>
+<li>好处是InnoDB在移动行时无需更新一级索引中的这个”指针“，因为主键是不会改变的，但是行指针却会改变<h4 id="使用InnoDB主键应该知道的事项"><a href="#使用InnoDB主键应该知道的事项" class="headerlink" title="使用InnoDB主键应该知道的事项"></a>使用InnoDB主键应该知道的事项</h4></li>
+<li>因为InnoDB的索引的方式通过主键聚集数据，严重依赖主键。索引如果没有定义主键，那么InnoDB会选择一个唯一的非空索引代替。如果没有这样的索引，InnoDB会隐式定义一个主键来作为聚簇索引。<h5 id="聚簇索引的优点有："><a href="#聚簇索引的优点有：" class="headerlink" title="聚簇索引的优点有："></a>聚簇索引的优点有：</h5></li>
+</ul>
+<ol>
+<li>可以把相关数据存储在一起，减少数据查询时的磁盘I/O</li>
+<li>数据访问更快，因为聚簇索引就是表，索引和数据保存在一个B+Tree中</li>
+<li>使用索引覆盖的查询时可以直接使用页节点中的主键值<h5 id="聚簇索引的缺点有："><a href="#聚簇索引的缺点有：" class="headerlink" title="聚簇索引的缺点有："></a>聚簇索引的缺点有：</h5></li>
+<li>插入速度严重依赖插入顺序</li>
+<li>更新聚簇索引列的代价很高，因为会强制InnoDB把更新的列移动到新的位置</li>
+<li>基于聚簇索引的表在插入新行，或者主键被更新导致需要移动行的时候，可能会导致“页分裂”。当行的主键值要求必须将这一行插入到已满的页中时，存储引擎会将该页分裂为两个页面来容纳该行，这就是一次页分裂操作，页分裂会导致表占用更多的存储空间。</li>
+</ol>
+<p>基于聚簇索引以上的这些特点，在InnoDB中，我们应该尽量使用和应用无关的主键，例如整型自增主键，这样可以保证数据行是按照顺序写入的。而不是使用GUID、UUID生成随机的主键。占用空间大小整型，而且整型比较与字符串相比效率高。</p>
+<p>自增存储按顺序递增，UUID会分裂已经存满的页</p>
+<p>参考：</p>
+<ul>
+<li>MySQL——索引实现原理：<a href="https://juejin.im/post/5bd7a97de51d45400d5d7b18" target="_blank" rel="noopener">https://juejin.im/post/5bd7a97de51d45400d5d7b18</a></li>
+<li>MySQL索引背后的数据结构及算法原理：<a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">http://blog.codinglabs.org/articles/theory-of-mysql-index.html</a></li>
+<li>深入理解MySQL索引原理和实现：<a href="https://blog.csdn.net/tongdanping/article/details/79878302#t3" target="_blank" rel="noopener">https://blog.csdn.net/tongdanping/article/details/79878302#t3</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2019/08/20/Mysql索引底层实现/" data-title="香蕉弦定李" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/08/20/sql/" title="">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/08/20/Mysql高级/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储引擎"><span class="toc-number">1.</span> <span class="toc-text">存储引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB"><span class="toc-number">1.1.</span> <span class="toc-text">InnoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM"><span class="toc-number">1.2.</span> <span class="toc-text">MyISAM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较"><span class="toc-number">1.3.</span> <span class="toc-text">比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引"><span class="toc-number">2.</span> <span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM索引实现"><span class="toc-number">2.1.</span> <span class="toc-text">MyISAM索引实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB索引实现"><span class="toc-number">2.2.</span> <span class="toc-text">InnoDB索引实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用InnoDB主键应该知道的事项"><span class="toc-number">2.2.1.</span> <span class="toc-text">使用InnoDB主键应该知道的事项</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#聚簇索引的优点有："><span class="toc-number">2.2.1.1.</span> <span class="toc-text">聚簇索引的优点有：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#聚簇索引的缺点有："><span class="toc-number">2.2.1.2.</span> <span class="toc-text">聚簇索引的缺点有：</span></a></li></ol></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/Spring/" title="Spring">Spring<sup>2</sup></a></li>
+		
+			<li><a href="/categories/github-page/" title="github page">github page<sup>1</sup></a></li>
+		
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		
+			<li><a href="/categories/javaweb/" title="javaweb">javaweb<sup>4</sup></a></li>
+		
+			<li><a href="/categories/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/categories/odoo/" title="odoo">odoo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/tools/" title="tools">tools<sup>1</sup></a></li>
+		
+			<li><a href="/categories/小程序/" title="小程序">小程序<sup>1</sup></a></li>
+		
+			<li><a href="/categories/工具/" title="工具">工具<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Spring/" title="Spring">Spring<sup>2</sup></a></li>
+		
+			<li><a href="/tags/SpringBoot/" title="SpringBoot">SpringBoot<sup>2</sup></a></li>
+		
+			<li><a href="/tags/SpringMVC/" title="SpringMVC">SpringMVC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/axios/" title="axios">axios<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/java/" title="java">java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/javaweb/" title="javaweb">javaweb<sup>4</sup></a></li>
+		
+			<li><a href="/tags/odoo-web-python/" title="odoo web python">odoo web python<sup>1</sup></a></li>
+		
+			<li><a href="/tags/vscode/" title="vscode">vscode<sup>1</sup></a></li>
+		
+			<li><a href="/tags/小程序/" title="小程序">小程序<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2019 
+		
+		<a href="http://yoursite.com" target="_blank" title="Lixian">Lixian</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:""};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-143755758-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
