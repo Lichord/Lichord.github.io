@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title> | 香蕉弦定李</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">香蕉弦定李</h1><a id="logo" href="/.">香蕉弦定李</a><p class="description">教练，我想写代码</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-meta">Aug 15, 2019</div><div class="post-content"><h2 id="hashMap"><a href="#hashMap" class="headerlink" title="hashMap"></a>hashMap</h2><p>hashMap的特点及原理</p>
+<ul>
+<li>什么是HashMap？什么时候会使用HashMap？他有什么特点？</li>
+<li>HashMap的工作原理，内部实现，get和put的原理，怎么扩容的</li>
+<li>equals()和hashCode()的都有什么作用？</li>
+<li>你知道hash的实现吗？为什么要这样实现？</li>
+<li>手画HashMap结构，负载因子是多少，怎么计算的</li>
+</ul>
+<p>HashMap的碰撞问题</p>
+<ul>
+<li>如果hashMap的key是一个自定义的类怎么办</li>
+<li>为什么String, Interger这样的wrapper类适合作为键？</li>
+<li>什么是hash，什么是碰撞，什么是equals ？</li>
+<li>为什么重写equals还要重写hashCode</li>
+<li>如何减少碰撞？关于HashMap中的碰撞探测(collision detection)以及碰撞的解决方法？</li>
+</ul>
+<p>HashMap的线程安全问题</p>
+<ul>
+<li>你了解重新调整HashMap大小存在什么问题吗？</li>
+<li>为什么HashMap是线程不安全的，实际会如何体现？</li>
+<li>能否让HashMap实现线程安全/同步，如何做？</li>
+<li>高并发下，为什么HashMap会出现死锁</li>
+</ul>
+<p>HashMap,HashSet,HashTable,CocurrentHashMap的对比和差异</p>
+<ul>
+<li>什么是HashSet？HashSet与HashMap的区别？</li>
+<li>为什么HashTable的默认大小和HashMap不一样？</li>
+<li>hashMap和ConCurrentHashMap区别</li>
+<li>我们可以使用CocurrentHashMap来代替Hashtable吗？</li>
+</ul>
+<p>其他</p>
+<ul>
+<li>HashMap的复杂度</li>
+<li>对key进行Hash计算</li>
+<li>几个常用的哈希码的算法</li>
+</ul>
+<p>容器相关知识点，HashMap底层<br>画一下HashMap底层结构<br>HashMap底层，负载因子，为啥是2^n<br>ConcurrentHashMap锁加在了哪些地方多线程同步的方法<br>HashMap, Hashtable底层，区别，<br>TreeMap底层，红黑树原理<br>HashMap是线程安全的吗，那怎么才能线程安全？ ConcurrentHashMap原理</p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>ArrayList和LinkedList的区别，如果一直在list的尾部添加元素，用哪个效率高？</p>
+<h2 id="同步，线程安全"><a href="#同步，线程安全" class="headerlink" title="同步，线程安全"></a>同步，线程安全</h2><ul>
+<li>介绍一下Syncronized锁。如果用这个关键字修饰一个静态方法，锁住了什么？如果修饰成员方法，锁住了什么？</li>
+<li>介绍一下volatile</li>
+<li>多线程中的i++线程安全吗？为什么？</li>
+<li>如何线程安全的实现一个计数器？</li>
+<li>线程同步有哪几种方式</li>
+<li>同步接口和异步接口区别（这个当时没听过啊）</li>
+<li>说一下Synchronized和lock<ul>
+<li>lock是接口，synchronized是关键字，lock需要获取锁，释放锁，synchronized自动获取锁和释放锁，使用简单方便。性能角度，线程较多时，lock性能好，线程少时synchronized性能好。synchronized使用比较多</li>
+</ul>
+</li>
+<li>单例模式和多线程有关系吗？<br>我说如果单例模式有的写法在多线程下不能保证只生成一个实例，面试官却说你既然都只有一个单例了，那跟多线程还有关系嘛，感觉完全没跟面试官一个点上，，，，</li>
+</ul>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><ul>
+<li>说一下IOC和AOP</li>
+<li>Hibernate中有哪几种数据库语句写法？我只回答了Sql和Hql，另一种没回答上来</li>
+<li>Mybatis和Hibernate区别</li>
+<li>Struts拦截器和Spring AOP区别</li>
+<li>Spring MVC有了解嘛，Spring 事务有了解嘛</li>
+<li>Spring MVC注解的优点</li>
+<li>为什么选用springboot框架？ springboot框架源码看过吗？</li>
+</ul>
+<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>GC工具用过哪些</p>
+<p>4.最近有没有学习新技术，怎么学的，看过哪些书<br>我说最近在看redis和算法，JVM<br>5.看了JVM之后，对Java有什么新的看法<br>面试提问也很累的，说说你擅长什么吧？<br>我说容器和JVM还挺熟的，让我说一下容器中有几个接口，Hashtable的父接口是谁，然后说我这个回答的还行</p>
+<p>接下来画JVM内存结构图，让我解释一下程序计数器作用，我说记录线程执行的位置，面试官继续追问怎么记录线程执行的位置？</p>
+<p>当时脑子有点蒙，没想过这个问题，面试官说当cpu在轮流执行线程的时候，返回原先的线程需要记录。最后说你这样的我今天见得太多了，还是要把技术搞搞深入。</p>
+<p>我说还要解释JVM内存中其他的部分吗，面试官说不用了，劝诫我把技术搞的深一点，说他们想找那些技术做的比较深的人，暗示我已经凉凉，，，，</p>
+<p>JVM，垃圾回收算法，垃圾回收器<br>JVM回收算法和回收器，CMS采用哪种回收算法，怎么解决内存碎片问题（这个回答的不好，面试官说问的有点深了）<br>类加载机制，双亲委派模型，好处是什么<br>说一下G1的策略</p>
+<h2 id="javaweb基础"><a href="#javaweb基础" class="headerlink" title="javaweb基础"></a>javaweb基础</h2><p>forward与redirect区别，说一下你知道的状态码，redirect的状态码是多少</p>
+<p>get和post区别</p>
+<p>cookie和session介绍一下区别</p>
+<h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><p>介绍项目，画结构图，用到哪些技术<br>最近有没有学习新技术，准备往哪方向学习?</p>
+<ol start="2">
+<li>项目中用到了哪些技术，最大的难点是什么，怎么学习新技术</li>
+<li>自我介绍，说一个你最擅长的项目</li>
+<li>做这个项目的目的，说一下你负责的部分，最大的难点是什么，你怎么解决的，你从项目中学到了什么</li>
+<li>项目中用到的技术，最大的收获，还有做过其他的项目嘛</li>
+<li>平时的爱好？<br>你有什么想问我的吗<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2>数据库索引有了解过嘛，解释一下两种引擎，</li>
+</ol>
+<p>索引了解嘛，底层怎么实现的，什么时候会失效</p>
+<p>有一组合索引（A,B,C），会出现哪几种查询方式？</p>
+<p>数据库索引有哪些，什么时候会失效，索引底层是怎么实现的</p>
+<p> 一个学生表，一个课程成绩表，怎么找出学生课程的最高分数</p>
+<p>SQL</p>
+<p>找出每个城市的最新一条记录（没写出来）<br>id 城市 人口 信息 创建时间<br>1 北京 100 info1 时间戳<br>2 北京 100 info2 时间戳<br>3 上海 100 info3 时间戳<br>4 上海 100 info4 时间戳</p>
+<p>看着笔试卷子，问了数据库的隔离级别</p>
+<p>有用过索引嘛，索引底层实现，B树与B+树区别</p>
+<p>数据库用的什么引擎，MyISAM和Innodb区别在哪</p>
+<p>手写数据库一些操作（增删改查）<br>淘宝的目录树，设计数据库的表和字段</p>
+<p>为什么InnoDB必须有主键，并且推荐使用整型的自增主键</p>
+<p>为什么非主键索引结构叶子节点存储的是主键值（一致性和节省存储空间）</p>
+<p>联合索引的底层存储结构长什么样</p>
+<h2 id="数据结构算法"><a href="#数据结构算法" class="headerlink" title="数据结构算法"></a>数据结构算法</h2><p>反转单链表<br>寻找一数组中前K个最大的数<br>求一个数组中连续子向量的最大和<br>排序算法知道哪些，时间复杂度是多少，解释一下快排<br>哪些排序算法是稳定的，稳定性定义<br>寻找一数组中前K个最大的数，我说了另一种算法，感觉面试官想让我说最小堆<br>二叉树Z字型遍历<br>找出数组中和为S的一对组合，找出一组就行</p>
+<ol start="4">
+<li><p>会哪些排序算法，解释一下快排原理</p>
+</li>
+<li><p>一个数的因子只能是3，5，7，问第n个这样的数是多少?（剑指offer丑数那题变型，我回答的不好）</p>
+</li>
+<li><p>规定1分钟之内只能处理1000个请求，你怎么实现，手撕代码</p>
+</li>
+</ol>
+<p>写好了之后，面试官一再强调一分钟是相对时间，感觉我的写法面试官并不满意，然后这个问题纠缠了很久</p>
+<ol start="7">
+<li><p>怎么求一个二叉树的深度?手撕代码</p>
+</li>
+<li><p>两个数组A和B,怎么求解两个数组中和为S的所有组合（组合中一个元素是A的，一个元素是B的）</p>
+</li>
+</ol>
+<p>我说先排序，然后头尾指针遍历</p>
+<ol start="9">
+<li>知道哪些排序算法，说一下快排和归并排序思想<br>算法题：二叉树层序遍历，进一步提问：要求每层打印出一个换行符</li>
+<li>知道哪些排序算法，快速排序和归并排序的区别，适用于哪些场合？堆排序呢？</li>
+</ol>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>场景题：生产者消费者模式可解<br>场景题：微信抢红包问题，我说可以用生产者消费者模式解决，采用乐观锁，<br>场景题：1000个任务，分给10个人做，你怎么分配，先在纸上写个最简单的版本，然后优化，<br>说了两种方式之后，面试官继续追问：有没有不阻塞的方式，我说有，但是忘记了，面试官说你回去再看看吧<br>给个淘宝场景，怎么设计一消息队列</p>
+<p>场景题：美团首页每天会从10000个商家里面推荐50个商家置顶，每个商家有一个权值，你如何来推荐？第二天怎么更新推荐的商家？</p>
+<ol start="17">
+<li>编程题：写一个函数，找到一个文件夹下所有文件，包括子文件夹。</li>
+<li>写代码，找到一个目录下的所有子孙目录（大概是这个意思，最终我也没听懂，因为我总感觉跟第17个问题一样）<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2>了解哪些设计模式，介绍一下生产者消费者模式<br>说一下单例模式的各种写法，手写一种线程安全的<br>手写一下观察者模式</li>
+</ol>
+<hr>
+<p>一个十进制的数在内存中是怎么存的？</p>
+<p>为啥有时会出现4.0-3.6=0.40000001这种现象？（这个没回答上来，让我回去看看）</p>
+<p>自我介绍，Java和C区别</p>
+<p>看你学习过最优化方法，这是跟运筹有关的嘛，跟矩阵运算有关系嘛</p>
+<ol start="3">
+<li><p>怎么解决你这个系统高并发的问题?<br>我说可以用负载均衡来平衡流量，扩大服务器规模，面试官说你数据库服务器不要处理嘛，我赶紧补了一句可以用缓存</p>
+</li>
+<li><p>负载均衡怎么配置?<br>只看过介绍，没配置过阿</p>
+</li>
+<li><p>缓存找到了数据怎么配置，找不到又怎样处理?画一下</p>
+</li>
+</ol>
+<p>最后问了我在java中内存泄露是啥，什么时候出现内存泄露，</p>
+<p>长连接怎么实现<br>讲一下什么情况可以影响到新生代的回收速度。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2019/08/19/Java高并发/"></a><a class="next" href="/2019/08/14/Java集合/"></a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/github-page/">github page</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaweb/">javaweb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/odoo/">odoo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/SpringMVC/" style="font-size: 15px;">SpringMVC</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/javaweb/" style="font-size: 15px;">javaweb</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/axios/" style="font-size: 15px;">axios</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/odoo-web-python/" style="font-size: 15px;">odoo web python</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/SpringBoot/" style="font-size: 15px;">SpringBoot</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">香蕉弦定李.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
