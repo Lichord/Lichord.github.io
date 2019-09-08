@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>双系统安装记录 | 香蕉弦定李</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">双系统安装记录</h1><a id="logo" href="/.">香蕉弦定李</a><p class="description">教练，我想写代码</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">双系统安装记录</h1><div class="post-meta">Jul 2, 2019<span> | </span><span class="category"><a href="/categories/电脑/">电脑</a></span></div><div class="post-content"><p>目标：在装了win10的电脑上装个Ubuntu，并将C盘的软件迁移到其他非系统盘</p>
+<h3 id="情况"><a href="#情况" class="headerlink" title="情况"></a>情况</h3><p>win10的系统，笔记本一个只有250G的固态，剩余60G空间。只有一个C盘，担心哪天系统完蛋安装的软件数据都没了，毕竟那么多的开发工具要重装还是很费时。</p>
+<p>同时想给电脑再装一个linux双系统,磁盘空间不够</p>
+<h2 id="一-重要数据备份"><a href="#一-重要数据备份" class="headerlink" title="一. 重要数据备份"></a>一. 重要数据备份</h2><h3 id="磁盘分区，将数据备份到非系统盘"><a href="#磁盘分区，将数据备份到非系统盘" class="headerlink" title="磁盘分区，将数据备份到非系统盘"></a>磁盘分区，将数据备份到非系统盘</h3><p>按照win10默认的分区方法，可压缩的空间只有2G</p>
+<h4 id="1-网上解决方案-尝试无效"><a href="#1-网上解决方案-尝试无效" class="headerlink" title="1. 网上解决方案(尝试无效)"></a>1. 网上解决方案(尝试无效)</h4><p>估计是可能有些文件占用了较后的存储位置，导致空间不连续，无法合并成为新的空间。</p>
+<ul>
+<li>打开”这台电脑“，在想压缩的分区上右击选择”属性“，在打开的对话框中选择”工具“页，尝试了“检查”和“优化”，将文件存储优化。</li>
+<li>在桌面上的“这台电脑”上右单击，选择“属性”，在左侧菜单中选择“系统保护”，在弹出框中选中要压缩的分区，点击“配置”，在弹出框中选择“禁用系统保护”后点击“确定”，并重启系统。</li>
+<li>可能是有文件正在使用，系统无法调整并将其空间腾出，就尝试关闭虚拟内存。<br>在“这台电脑”上右击，选择“属性”，在弹出框中选择左侧菜单“高级系统设置”，在弹出框的高级分页下，点击第一个性能框中的”设置“按钮，在弹出框中选择”高级”页，点击虚拟内存分页右下角的“更改”按钮。在弹出的标题为“虚拟内存”的对话框中，取消“自动管理所有驱动器的分页文件大小”前面的勾，同时选择”无分页文件“，点击右侧的”设置“，后”确认“，根据提示，重启系统。</li>
+</ul>
+<h4 id="2-用软件分区-成功"><a href="#2-用软件分区-成功" class="headerlink" title="2. 用软件分区(成功)"></a>2. 用软件分区(成功)</h4><ul>
+<li>下载了傲然分区助手，按照教程分区成功，但是分区过程非常非常非常漫长</li>
+</ul>
+<h2 id="三-迁移软件"><a href="#三-迁移软件" class="headerlink" title="三. 迁移软件"></a>三. 迁移软件</h2><p>分区之后想尝试一下把C盘的软件迁移到D盘，于是下载了一个腾讯电脑管家来帮助我迁移</p>
+<p>经过再次漫长的等待,显示将Anaconda迁移成功了，但是当我想要开启Anaconda，黑屏了，原因未知，重启之后就没事了</p>
+<h3 id="解决迁移软件问题"><a href="#解决迁移软件问题" class="headerlink" title="解决迁移软件问题"></a>解决迁移软件问题</h3><ul>
+<li>先确保软件是否的确在电脑上迁移成功，我在命令行输入<code>conda --version</code>是无效命令，所以先将之前配置的环境变量改成现有目录，改变环境变量之后再输入命令就能看到版本了。</li>
+<li>原本安装在C盘的快捷方式都无效了，安装目录下又找不到程序入口<blockquote>
+<p>解决：找到Ananconda的安装目录下的Menu文件夹，命令行打开，输入<code>python .\Lib\_nsis.py mkmenus</code>就会重新创建快捷方式了</p>
+</blockquote>
+</li>
+</ul>
+<p>参考：<a href="https://blog.csdn.net/qq_42580947/article/details/90671836" target="_blank" rel="noopener">https://blog.csdn.net/qq_42580947/article/details/90671836</a></p>
+<ul>
+<li>打开Spyder的快捷方式，报错：This application failed to start because it could not find or load the Qt platfrom plugin “windows” in “”.Reinstalling the application may fix this problem</li>
+<li>按照网上方法将\Anaconda3\Library\plugins下的platform文件夹拷贝到\Anaconda下重新打开，没有反应</li>
+<li>我突然想看一下其他没有移动的软件是否存在问题，打开Pycharm，IDEA都报错failed to create jvm error code -4</li>
+<li>网上说是内存不足导致的，我想可能是压缩完之后碎片比较多造成的</li>
+<li>此外，我在查找解决方案的过程中，Chrome和IE浏览器都频繁卡死，以及出现程序错误的报错信息，Chrome也提示内存不足，无法打开页面，甚至造成电脑重启。</li>
+<li>打开此电脑-&gt;左击C盘-&gt;点击窗口上方的管理-&gt;优化</li>
+<li>对C盘进行优化之后，IDEA，PYcharm，还有Anaconda的软件都能打开了</li>
+<li>想到之前为了分区修改了系统的配置，我又重新将配置改回以前的样子。对电脑进行重启。问题解决<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>迁移软件 虽然软件安装目录变了，配置文件等等数据文件却都还在C盘，系统崩了一样麻烦，所以迁移软件并不是什么好的方法，完全迁移时间成本太高，不如重装。</li>
+</ul>
+<h2 id="二-安装双系统"><a href="#二-安装双系统" class="headerlink" title="二. 安装双系统"></a>二. 安装双系统</h2><h4 id="装双系统的方案"><a href="#装双系统的方案" class="headerlink" title="装双系统的方案"></a>装双系统的方案</h4><h5 id="1-双硬盘单引导分区。"><a href="#1-双硬盘单引导分区。" class="headerlink" title="1. 双硬盘单引导分区。"></a>1. 双硬盘单引导分区。</h5><p>两个硬盘分别装两个系统，两个系统分主从；在主系统所在盘上划分EFI分区，从系统所在硬盘不划分EFI分区；两个系统的引导都放在主系统硬盘上的EFI分区，两个系统共用一个引导程序，一般是grub2。开机使用grub2选择系统。这是绝大多数的做法</p>
+<ul>
+<li>优点：引导简单，绝大多数电脑都可以快速选择系统；</li>
+<li>缺点是主系统删除麻烦，还得重新建立从系统的引导</li>
+</ul>
+<h5 id="2-双硬盘双引导分区"><a href="#2-双硬盘双引导分区" class="headerlink" title="2. 双硬盘双引导分区"></a>2. 双硬盘双引导分区</h5><p>这样的方案适用于开机可以快速选择启动硬盘的电脑<br>具体实现方法：单独安装一个硬盘，分别给两个硬盘做好系统，然后再将两个硬盘都放入电脑。<br>如果使用这种方式，两个硬盘分别各有一个EFI分区，各自有各自的引导程序；系统的引导文件分别在各自的硬盘里面，互不干扰；两个系统分别使用各种的引导程序进行引导，即Linux使用grub2, Windows使用Windows boot manager；开机通过选择硬盘进行系统的选择，而不是引导程序选择系统</p>
+<ul>
+<li>优点：双系统随意搞，一个系统搞垮完全不会影响另一个系统，删除任意一个系统也不需要重新建立引导；</li>
+<li>缺点：部分电脑选择启动硬盘可能比较麻烦，视情况而定</li>
+</ul>
+<blockquote>
+<p>重启看了一下开机时的选项，按F2 setup进入bios,按F7是Boot Option可以选择启动硬盘所以方案2 相对来说还是更安全方便一些</p>
+</blockquote>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="1-加装固态硬盘"><a href="#1-加装固态硬盘" class="headerlink" title="1. 加装固态硬盘"></a>1. 加装固态硬盘</h4><h4 id="2-刻录光盘"><a href="#2-刻录光盘" class="headerlink" title="2. 刻录光盘"></a>2. 刻录光盘</h4><ol>
+<li>下载Ubuntu镜像文件，地址：<a href="https://cn.ubuntu.com/download" target="_blank" rel="noopener">https://cn.ubuntu.com/download</a></li>
+<li>Windows下可以通过UltraISO来制作U盘系统启动盘,安装UltraISO</li>
+<li>准备一个空U盘</li>
+<li>打开UltrsalSO,选中本地的Ubuntu iOS影像文件，点击菜单栏启动-&gt;写入硬盘映像，选中u盘，</li>
+<li><strong>修改写入方式为raw,写入成功之后U盘会变小，可以安装完系统之后重新选择默认的写入方式写入一遍恢复U盘</strong>。否则用U盘启动会报Failed to load ldlinux.c32 Boot failed：please change disks and press a key to continue错误并发出警报声</li>
+<li>点击写入，等待。<h4 id="3-安装系统"><a href="#3-安装系统" class="headerlink" title="3. 安装系统"></a>3. 安装系统</h4><h5 id="踩坑路程"><a href="#踩坑路程" class="headerlink" title="踩坑路程"></a>踩坑路程</h5></li>
+</ol>
+<ul>
+<li>第一遍安装按照指引非常快速地装完了，基本上需要手动更改的就是安装类型选择其他选项，自己设置分区大小。</li>
+<li>安装操作大概是这样：<a href="https://www.jianshu.com/p/54d9a3a695cc" target="_blank" rel="noopener">https://www.jianshu.com/p/54d9a3a695cc</a></li>
+<li>安装完，点击重启，界面卡死，于是强制重启</li>
+<li>存在的问题就是系统重启会卡死，以及界面非常不流畅，鼠标滑过界面卡顿明显</li>
+<li>总而言之就是显卡的问题，之后一切的操作都围绕显卡问题不断从一个坑到另一个坑<h5 id="按照网上的方法不断尝试碰到的问题"><a href="#按照网上的方法不断尝试碰到的问题" class="headerlink" title="按照网上的方法不断尝试碰到的问题"></a>按照网上的方法不断尝试碰到的问题</h5></li>
+</ul>
+<ol>
+<li>启动失败/dev/sda1 <em>* :clean, /</em> files,/ blocks</li>
+</ol>
+<ul>
+<li>网上说先Ctrl+Alt+F1……F6，具体f几自己试，进入命令行，我都不行</li>
+<li>于是重启，设置在本次启动时用命令后方式打开：<a href="https://jingyan.baidu.com/article/3052f5a104b9b797f31f86b0.html#!/article/3052f5a104b9b797f31f86b0" target="_blank" rel="noopener">https://jingyan.baidu.com/article/3052f5a104b9b797f31f86b0.html#!/article/3052f5a104b9b797f31f86b0</a></li>
+<li>之后，使用  sudo apt-get purge nvidia*  卸载掉之前的驱动</li>
+<li>reboot</li>
+</ul>
+<ol start="2">
+<li>循环登陆：每次输入密码之后重新跳到登陆页面</li>
+</ol>
+<p>尝试1：（无效）</p>
+<ul>
+<li>Ctrl+alt+F1进入终端，输入自己的账号密码</li>
+<li>将Xauthority的拥有者改为Linux用户,这里lixian是我的用户名，<code>sudo chown lixian:lixian  .Xauthority</code></li>
+<li>终端显示<code>-row------ 1 lixian lixian ....</code>就算正确了</li>
+<li>Ctrl+alt+F7回到图形页面登录</li>
+<li><a href="https://jingyan.baidu.com/article/08b6a591b16dbf14a80922e4.html#!/article/08b6a591b16dbf14a80922e4" target="_blank" rel="noopener">https://jingyan.baidu.com/article/08b6a591b16dbf14a80922e4.html#!/article/08b6a591b16dbf14a80922e4</a></li>
+</ul>
+<p>尝试2：（成功）还是驱动问题</p>
+<ul>
+<li>sudo apt-get remove –purge nvidia-*</li>
+<li>sudo apt-get autoremove</li>
+<li>sudo apt-get install -f</li>
+<li>sudo reboot</li>
+<li>重启成功</li>
+<li><a href="https://blog.csdn.net/tangwenbo124/article/details/79120677" target="_blank" rel="noopener">https://blog.csdn.net/tangwenbo124/article/details/79120677</a></li>
+</ul>
+<ol start="3">
+<li>黑屏</li>
+</ol>
+<p><strong>这些问题出现的解决方案其实都是想办法进入命令行把安装的驱动卸载</strong></p>
+<ol start="4">
+<li>驱动安装成功但没有效果</li>
+</ol>
+<ul>
+<li>驱动安装成功：输入<code>nvidia-smi</code>会显示版本信息之类的</li>
+<li>输入<code>nvidia-settings</code>ERROR: Unable to load info from any available system</li>
+</ul>
+<ol start="5">
+<li>实在没办法了我选择重装系统</li>
+</ol>
+<ul>
+<li>重装系统的时候看这个：<a href="https://www.jianshu.com/p/54d9a3a695cc" target="_blank" rel="noopener">https://www.jianshu.com/p/54d9a3a695cc</a> 总结那里正是我想说的，网上什么乱起乱七八糟的方法我都试过，都不行，其实不用那么复杂。在装系统的时候，系统进入引导界面让你选择语言然后选安装还是适用的界面之前，按e,进入设置的界面，会让你选择语言，选完之后选择安装Ubuntu，删掉quiet splash后面的—，加上nomodeset 再进行安装<ul>
+<li>安装驱动的命令其实是很简单的，如果卸载重装驱动不行，不如重装系统</li>
+</ul>
+</li>
+</ul>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2019/07/03/IDEA使用问题/">IDEA使用问题</a><a class="next" href="/2019/07/01/hexo+Github Page搭建博客/">hexo+github Page搭建博客与配置</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaweb/">javaweb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客配置/">博客配置</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/电脑/">电脑</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/javaweb/" style="font-size: 15px;">javaweb</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/SpringMVC/" style="font-size: 15px;">SpringMVC</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/SpringBoot/" style="font-size: 15px;">SpringBoot</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/odoo/" style="font-size: 15px;">odoo</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">香蕉弦定李.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
