@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>linux常用命令 | 香蕉弦定李</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">linux常用命令</h1><a id="logo" href="/.">香蕉弦定李</a><p class="description">教练，我想写代码</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">linux常用命令</h1><div class="post-meta">Jul 22, 2019<span> | </span><span class="category"><a href="/categories/linux/">linux</a></span></div><div class="post-content"><ul>
+<li>date 显示时间</li>
+<li>cal 12 2019 日历</li>
+<li>pwd 显示当前所在文件夹</li>
+<li>cd / 切换到根目录 也可以切换到别的目录</li>
+<li>cd .. 退回到下一个文件夹</li>
+<li>cd 切换到用户主目录</li>
+<li>ls 当前文件夹下面有什么文件</li>
+<li>ls -l 当前文件夹下面文件极其详细信息</li>
+<li>clear清空屏幕</li>
+<li>mkdir hello创建一个名为hello的文件夹</li>
+<li>rmdir hello/ 移除文件夹</li>
+<li>cp a.txt file.txt 复制a.txt 再生成file.txt</li>
+<li>cat sym.txt 查看文件所有内容</li>
+<li>less sym.txt文件太长的时候可以翻页查看，点击q退出这个查看模式</li>
+<li>diff sym.txt file2.txt 查看两个文件的不同的地方</li>
+<li>head sum.txt -n 6  看文件前面6行</li>
+<li>tail sum.txt -n 6  看文件最后面6行</li>
+<li>wc sym.txt<ul>
+<li>输出：178 225 1836 sym.txt</li>
+<li>表示：sym.txt文件一共178行，有225个单词，1836个字节</li>
+</ul>
+</li>
+<li>wc -w sym.txt 看有多少个单词</li>
+<li>wc -l sym.txt 看有多少行</li>
+<li>wc -c sym.txt 看有多少字节</li>
+<li>rm file2.txt 删除文件(慎用)</li>
+<li>mv file1.txt a.txt 将file1.txt改名成a.txt</li>
+<li>mv hi.txt bye/将hi.txt移动到bye文件夹下</li>
+<li>zip program.zip * 将文件夹下所有文件压缩成program.zip</li>
+<li>zip workspace.zip -r workspace/*把workspace下所有东西做成压缩包，-r表示把文件夹的子文件夹也一层一层打包</li>
+<li>tar -zcvf file.tar.gz wo/ 压缩wo文件夹</li>
+<li>tar -zxvf file.tar.gz 解压</li>
+<li>unzip workspace.zip</li>
+<li>wget 网址 //下载这个网址的内容</li>
+<li>wget 网址 -O newname.tar.gz//下载这个网址的文件并重命名</li>
+</ul>
+<h3 id="chmod权限管理："><a href="#chmod权限管理：" class="headerlink" title="chmod权限管理："></a>chmod权限管理：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">linux下的三种不同用户，分别是u,g,o代表作者，小组，其他人；每种用户的权限都有三种r,w,x，分别是可读可写运行</span><br><span class="line"></span><br><span class="line">ls  -l查看文件或者文件夹的详情时</span><br><span class="line">输出：-rm-r--r-- </span><br><span class="line">-开头表示这是文件，d开头的话表示是目录，用户可读可写，小组成员其他人可读</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>chmod  u-r hello.txt将作者的权限减去可读</li>
+<li>chmod u+r hello.txt为作者增加可读权限</li>
+<li>chmod go-r 小组，其他人都不可读<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">权限可以用二进制表示，1有权限，0无权限</span><br><span class="line"></span><br><span class="line">r w x</span><br><span class="line"></span><br><span class="line">1 1 0</span><br><span class="line"></span><br><span class="line">可读可写不可运行，十进制等于6</span><br><span class="line"></span><br><span class="line">chmod 644 hello.txt 作者可读可写，小组，其他人可读</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="grep-结合正则表达式搜索"><a href="#grep-结合正则表达式搜索" class="headerlink" title="grep 结合正则表达式搜索"></a>grep 结合正则表达式搜索</h3><ul>
+<li><code>grep en hello.txt</code> 显示hello.txt里面包含en这个字符串的所有单词。en这个位置可以用其他正则表达式代替</li>
+<li><code>grep l* hello.txt</code>查找所有l出现0-n次的单词</li>
+<li><code>grep ll* hello.txt</code>查找所有l出现1-n次的单词</li>
+<li><code>grep ^H hello.txt</code>查找以H开头的单词</li>
+<li><code>grep H.ll hello.txt</code> .表示任意字母</li>
+<li><code>grep [Hh].ll hello.txt</code> []里面的H,h任选一个</li>
+<li><code>grep [A-Za-z]ill hello.txt</code> 任意字母</li>
+<li><code>grep [A-Za-z]ill hello.txt | wc</code> 把输出的所有内容放在wc中进行统计<ul>
+<li>输出：19 29 224</li>
+<li>表示：19行，29个单词，224字符</li>
+</ul>
+</li>
+</ul>
+<h3 id="重定向符号-gt"><a href="#重定向符号-gt" class="headerlink" title="重定向符号 &gt;"></a>重定向符号 &gt;</h3><p><code>ls &gt; 1.txt</code></p>
+<p>将本来会在shell输出的内容，就是当前文件夹下的文件信息，放在1.txt文件中</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2019/07/22/Mysql索引底层实现/">MySQL索引底层实现</a><a class="next" href="/2019/07/22/MySql必知必会/">mysql必知必会</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaweb/">javaweb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客配置/">博客配置</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/电脑/">电脑</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/odoo/" style="font-size: 15px;">odoo</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/数据分析/" style="font-size: 15px;">数据分析</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">香蕉弦定李.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
