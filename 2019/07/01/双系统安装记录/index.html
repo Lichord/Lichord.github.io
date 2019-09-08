@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>hexo+github Page搭建博客与配置 | 香蕉弦定李</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">hexo+github Page搭建博客与配置</h1><a id="logo" href="/.">香蕉弦定李</a><p class="description">教练，我想写代码</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">hexo+github Page搭建博客与配置</h1><div class="post-meta">Jul 1, 2019<span> | </span><span class="category"><a href="/categories/博客配置/">博客配置</a></span></div><div class="post-content"><h3 id="上网了解一下装双系统的方案"><a href="#上网了解一下装双系统的方案" class="headerlink" title="上网了解一下装双系统的方案"></a>上网了解一下装双系统的方案</h3><ol>
+<li>双硬盘单引导分区。两个硬盘分别装两个系统，两个系统分主从；在主系统所在盘上划分EFI分区，从系统所在硬盘不划分EFI分区；两个系统的引导都放在主系统硬盘上的EFI分区，两个系统共用一个引导程序，一般是grub2。开机使用grub2选择系统。这是绝大多数的做法</li>
+</ol>
+<ul>
+<li>优点：引导简单，绝大多数电脑都可以快速选择系统；</li>
+<li>缺点是主系统删除麻烦，还得重新建立从系统的引导</li>
+</ul>
+<ol start="2">
+<li>双硬盘双引导分区。这样的方案适用于开机可以快速选择启动硬盘的电脑<br>具体实现方法：单独安装一个硬盘，分别给两个硬盘做好系统，然后再将两个硬盘都放入电脑。<br>如果使用这种方式，两个硬盘分别各有一个EFI分区，各自有各自的引导程序；系统的引导文件分别在各自的硬盘里面，互不干扰；两个系统分别使用各种的引导程序进行引导，即Linux使用grub2, Windows使用Windows boot manager；开机通过选择硬盘进行系统的选择，而不是引导程序选择系统</li>
+</ol>
+<ul>
+<li>优点：双系统随意搞，一个系统搞垮完全不会影响另一个系统，删除任意一个系统也不需要重新建立引导；</li>
+<li>缺点：部分电脑选择启动硬盘可能比较麻烦，视情况而定</li>
+</ul>
+<blockquote>
+<p>重启看了一下开机时的选项，按F2 setup进入bios,按F7是Boot Option可以选择启动硬盘所以方案2 相对来说还是更安全方便一些</p>
+</blockquote>
+<h3 id="刻录光盘"><a href="#刻录光盘" class="headerlink" title="刻录光盘"></a>刻录光盘</h3><ol>
+<li>下载Ubuntu镜像文件，地址：<a href="https://cn.ubuntu.com/download" target="_blank" rel="noopener">https://cn.ubuntu.com/download</a></li>
+<li>Windows下可以通过UltraISO来制作U盘系统启动盘,安装UltraISO</li>
+<li>准备一个空U盘</li>
+<li>打开UltrsalSO,选中本地的Ubuntu iOS影像文件，点击菜单栏启动-&gt;写入硬盘映像，选中u盘，</li>
+<li><strong>修改写入方式为raw,写入成功之后U盘会变小，可以安装完系统之后重新选择默认的写入方式写入一遍恢复U盘</strong>。否则用U盘启动会报Failed to load ldlinux.c32 Boot failed：please change disks and press a key to continue错误并发出警报声</li>
+<li>点击写入，等待。</li>
+</ol>
+<h3 id="安装硬盘（略）"><a href="#安装硬盘（略）" class="headerlink" title="安装硬盘（略）"></a>安装硬盘（略）</h3><h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><h4 id="踩坑路程"><a href="#踩坑路程" class="headerlink" title="踩坑路程"></a>踩坑路程</h4><ul>
+<li>第一遍安装按照指引非常快速地装完了，基本上需要手动更改的就是安装类型选择其他选项，自己设置分区大小。</li>
+<li>安装操作大概是这样：<a href="https://www.jianshu.com/p/54d9a3a695cc" target="_blank" rel="noopener">https://www.jianshu.com/p/54d9a3a695cc</a></li>
+<li>安装完，点击重启，界面卡死，于是强制重启</li>
+<li>存在的问题就是系统重启会卡死，以及界面非常不流畅，鼠标滑过界面卡顿明显</li>
+<li>总而言之就是显卡的问题，之后一切的操作都围绕显卡问题不断从一个坑到另一个坑<h5 id="按照网上的方法不断尝试碰到的问题"><a href="#按照网上的方法不断尝试碰到的问题" class="headerlink" title="按照网上的方法不断尝试碰到的问题"></a>按照网上的方法不断尝试碰到的问题</h5></li>
+</ul>
+<ol>
+<li>启动失败/dev/sda1 <em>* :clean, /</em> files,/ blocks</li>
+</ol>
+<ul>
+<li>网上说先Ctrl+Alt+F1……F6，具体f几自己试，进入命令行，我都不行</li>
+<li>于是重启，设置在本次启动时用命令后方式打开：<a href="https://jingyan.baidu.com/article/3052f5a104b9b797f31f86b0.html#!/article/3052f5a104b9b797f31f86b0" target="_blank" rel="noopener">https://jingyan.baidu.com/article/3052f5a104b9b797f31f86b0.html#!/article/3052f5a104b9b797f31f86b0</a></li>
+<li>之后，使用  sudo apt-get purge nvidia*  卸载掉之前的驱动</li>
+<li>reboot</li>
+</ul>
+<ol start="2">
+<li>循环登陆：每次输入密码之后重新跳到登陆页面</li>
+</ol>
+<p>尝试1：（无效）</p>
+<ul>
+<li>Ctrl+alt+F1进入终端，输入自己的账号密码</li>
+<li>将Xauthority的拥有者改为Linux用户,这里lixian是我的用户名，<code>sudo chown lixian:lixian  .Xauthority</code></li>
+<li>终端显示<code>-row------ 1 lixian lixian ....</code>就算正确了</li>
+<li>Ctrl+alt+F7回到图形页面登录</li>
+<li><a href="https://jingyan.baidu.com/article/08b6a591b16dbf14a80922e4.html#!/article/08b6a591b16dbf14a80922e4" target="_blank" rel="noopener">https://jingyan.baidu.com/article/08b6a591b16dbf14a80922e4.html#!/article/08b6a591b16dbf14a80922e4</a></li>
+</ul>
+<p>尝试2：（成功）还是驱动问题</p>
+<ul>
+<li>sudo apt-get remove –purge nvidia-*</li>
+<li>sudo apt-get autoremove</li>
+<li>sudo apt-get install -f</li>
+<li>sudo reboot</li>
+<li>重启成功</li>
+<li><a href="https://blog.csdn.net/tangwenbo124/article/details/79120677" target="_blank" rel="noopener">https://blog.csdn.net/tangwenbo124/article/details/79120677</a></li>
+</ul>
+<ol start="3">
+<li>黑屏</li>
+</ol>
+<p><strong>这些问题出现的解决方案其实都是想办法进入命令行把安装的驱动卸载</strong></p>
+<ol start="4">
+<li>驱动安装成功但没有效果</li>
+</ol>
+<ul>
+<li>驱动安装成功：输入<code>nvidia-smi</code>会显示版本信息之类的</li>
+<li>输入<code>nvidia-settings</code>ERROR: Unable to load info from any available system</li>
+</ul>
+<ol start="5">
+<li>实在没办法了我选择重装系统</li>
+</ol>
+<ul>
+<li>重装系统的时候看这个：<a href="https://www.jianshu.com/p/54d9a3a695cc" target="_blank" rel="noopener">https://www.jianshu.com/p/54d9a3a695cc</a> 总结那里正是我想说的，网上什么乱起乱七八糟的方法我都试过，都不行，其实不用那么复杂。在装系统的时候，系统进入引导界面让你选择语言然后选安装还是适用的界面之前，按e,进入设置的界面，会让你选择语言，选完之后选择安装Ubuntu，删掉quiet splash后面的—，加上nomodeset 再进行安装<ul>
+<li>安装驱动的命令其实是很简单的，如果卸载重装驱动不行，不如重装系统</li>
+</ul>
+</li>
+</ul>
+</div><div class="tags"><a href="/tags/hexo/">hexo</a></div><div class="post-nav"><a class="pre" href="/2019/07/01/hexo+Github Page搭建博客/">hexo+github Page搭建博客与配置</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaweb/">javaweb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/odoo/">odoo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客配置/">博客配置</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/SpringMVC/" style="font-size: 15px;">SpringMVC</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/javaweb/" style="font-size: 15px;">javaweb</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/axios/" style="font-size: 15px;">axios</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/odoo-web-python/" style="font-size: 15px;">odoo web python</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/SpringBoot/" style="font-size: 15px;">SpringBoot</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">香蕉弦定李.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
