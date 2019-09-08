@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Java数据结构 | 香蕉弦定李</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Java数据结构</h1><a id="logo" href="/.">香蕉弦定李</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Java数据结构</h1><div class="post-meta">Jul 11, 2019<span> | </span><span class="category"><a href="/categories/java/">java</a></span></div><div class="post-content"><h1 id="十、Java数据结构"><a href="#十、Java数据结构" class="headerlink" title="十、Java数据结构"></a>十、Java数据结构</h1><h3 id="1-Java数组定义和初始化"><a href="#1-Java数组定义和初始化" class="headerlink" title="1.Java数组定义和初始化"></a>1.Java数组定义和初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//一维数组</span><br><span class="line">int a[];</span><br><span class="line">int b[];</span><br><span class="line">int []c=new int [2];//c有两个元素，都是0</span><br><span class="line"></span><br><span class="line">int d[]=new int[]&#123;1,3,5&#125;;</span><br><span class="line"></span><br><span class="line">//一维数组遍历</span><br><span class="line">for(int i=0;i&lt;d.length;i++)&#123;</span><br><span class="line">    System.out.println(d[i);</span><br><span class="line">&#125;</span><br><span class="line">for(int e: d)&#123;</span><br><span class="line">   System.out.println(e); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//多维数组遍历</span><br><span class="line">int k=0;</span><br><span class="line">for(int i=0;i&lt;a.length;i++)&#123;</span><br><span class="line">    for(int j=0;j&lt;a[i].length;j++)&#123;</span><br><span class="line">        a[i][j]==++k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">for(int[]items : a)</span><br><span class="line">&#123;</span><br><span class="line">    for(int item:items)&#123;</span><br><span class="line">        System.out.println(item+&quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JCF-容器框架"><a href="#2-JCF-容器框架" class="headerlink" title="2.JCF 容器框架"></a>2.JCF 容器框架</h3><p>容器是能够存放数据的空间结构，C++有STVL，Java有JCF(Java Collection Framework)</p>
+<h5 id="JCF的集合接口：Collection"><a href="#JCF的集合接口：Collection" class="headerlink" title="JCF的集合接口：Collection"></a>JCF的集合接口：Collection</h5><ul>
+<li>add,contains,remove,size</li>
+<li>iterator</li>
+</ul>
+<h5 id="JCF迭代器接口Iterator"><a href="#JCF迭代器接口Iterator" class="headerlink" title="JCF迭代器接口Iterator"></a>JCF迭代器接口Iterator</h5><ul>
+<li>hasNext</li>
+<li>next</li>
+<li>remove</li>
+</ul>
+<h5 id="JCF主要数据结构实现类"><a href="#JCF主要数据结构实现类" class="headerlink" title="JCF主要数据结构实现类"></a>JCF主要数据结构实现类</h5><ul>
+<li>列表 List,ArrayList,LinkedList</li>
+<li>集合(Set,HashSet,TreeSet,LinkedHashSet)</li>
+<li>映射(Map,HashMap,TreeMap,LinkedHashMap)</li>
+</ul>
+<h5 id="JCF主要的算法类："><a href="#JCF主要的算法类：" class="headerlink" title="JCF主要的算法类："></a>JCF主要的算法类：</h5><ul>
+<li>Arrays:对数组进行查找和排序操作</li>
+<li>Collections：对Collection及其子类进行排序和查找操作</li>
+</ul>
+<h3 id="3-列表List"><a href="#3-列表List" class="headerlink" title="3.列表List"></a>3.列表List</h3><ul>
+<li>列表是有序的Collection</li>
+<li>允许重复元素</li>
+<li>{1，2，4，{5，2}，1，3}</li>
+</ul>
+<h5 id="List主要实现"><a href="#List主要实现" class="headerlink" title="List主要实现"></a>List主要实现</h5><ul>
+<li>ArrayList(非同步)</li>
+<li>LinkedList(非同步)</li>
+<li>Vector(同步)<h4 id="ArrayList："><a href="#ArrayList：" class="headerlink" title="ArrayList："></a>ArrayList：</h4></li>
+<li>以数组实现的列表，不支持同步</li>
+<li>利用索引可以快速定位</li>
+<li>不适合指定位置的插入，删除操作</li>
+<li>适合变动不大，主要用于查询的数据</li>
+<li>和Java数组相比，其容量是课动态调整的,ArrayList在元素填满容器时会自动扩充容器大小的50%<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Iterator;</span><br><span class="line">//Vector 几乎和ArrayList一样，除了Vector本身是同步的</span><br><span class="line"></span><br><span class="line">public class ArrayListTest &#123;</span><br><span class="line">	public static void main(String[] a) &#123;  </span><br><span class="line">	    ArrayList&lt;Integer&gt; al = new ArrayList&lt;Integer&gt;();  </span><br><span class="line">	    al.add(3);  </span><br><span class="line">	    al.add(2);          </span><br><span class="line">	    al.add(1);  </span><br><span class="line">	    al.add(4);  </span><br><span class="line">	    al.add(5);  </span><br><span class="line">	    al.add(6);  </span><br><span class="line">	    al.add(new Integer(6));  </span><br><span class="line">	  </span><br><span class="line">	    System.out.print(&quot;The third element is  &quot;);</span><br><span class="line">	    System.out.println(al.get(3));</span><br><span class="line">	    al.remove(3);  //删除第四个元素，后面元素往前挪动</span><br><span class="line">	    al.add(3, 9);  //将9插入到第4个元素，后面元素往后挪动</span><br><span class="line">	    </span><br><span class="line">	    System.out.println(&quot;======遍历方法=============&quot;);</span><br><span class="line">	    </span><br><span class="line">	    ArrayList&lt;Integer&gt; as = new ArrayList&lt;Integer&gt;(100000);</span><br><span class="line">	    for (int i=0; i&lt;100000; i++)</span><br><span class="line">	    &#123;</span><br><span class="line">	    	as.add(i);</span><br><span class="line">	    &#125;</span><br><span class="line">	    traverseByIterator(as);</span><br><span class="line">	    traverseByIndex(as);</span><br><span class="line">	    traverseByFor(as);    </span><br><span class="line">	&#125;  </span><br><span class="line">	public static void traverseByIterator(ArrayList&lt;Integer&gt; al)</span><br><span class="line">	&#123;</span><br><span class="line">		long startTime = System.nanoTime();</span><br><span class="line">		System.out.println(&quot;============迭代器遍历==============&quot;); </span><br><span class="line">	    Iterator&lt;Integer&gt; iter1 = al.iterator();  </span><br><span class="line">	    while(iter1.hasNext())&#123;  </span><br><span class="line">	        iter1.next();  </span><br><span class="line">	    &#125;</span><br><span class="line">		long endTime = System.nanoTime();</span><br><span class="line">	    long duration = endTime - startTime;</span><br><span class="line">	    System.out.println(duration + &quot;纳秒&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	public static void traverseByIndex(ArrayList&lt;Integer&gt; al)</span><br><span class="line">	&#123;</span><br><span class="line">		long startTime = System.nanoTime();</span><br><span class="line">		System.out.println(&quot;============随机索引值遍历==============&quot;); </span><br><span class="line">	    for(int i=0;i&lt;al.size();i++)</span><br><span class="line">	    &#123;</span><br><span class="line">	    	al.get(i);</span><br><span class="line">	    &#125;</span><br><span class="line">		long endTime = System.nanoTime();</span><br><span class="line">	    long duration = endTime - startTime;</span><br><span class="line">	    System.out.println(duration + &quot;纳秒&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	public static void traverseByFor(ArrayList&lt;Integer&gt; al)</span><br><span class="line">	&#123;</span><br><span class="line">		long startTime = System.nanoTime();</span><br><span class="line">		System.out.println(&quot;============for循环遍历==============&quot;); </span><br><span class="line">	    for(Integer item : al)</span><br><span class="line">	    &#123;</span><br><span class="line">	    	;</span><br><span class="line">	    &#125;</span><br><span class="line">		long endTime = System.nanoTime();</span><br><span class="line">	    long duration = endTime - startTime;</span><br><span class="line">	    System.out.println(duration + &quot;纳秒&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//效率：foreach遍历&gt;索引位置遍历&gt;iterator遍历</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><ul>
+<li>以双向链表实现的列表，不支持同步<figure class="highlight plain"><figcaption><span>t list  </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 可被当作堆栈、队列和双端队列进行操作</span><br><span class="line">- 顺序访问高效，随机访问较差，中间插入和删除高效</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>import java.util.ArrayList;<br>import java.util.Iterator;<br>import java.util.LinkedList;</p>
+<p>public class LinkedListTest {</p>
+<pre><code>public static void main(String[] args) {
+    LinkedList&lt;Integer&gt; ll = new LinkedList&lt;Integer&gt;();  
+    ll.add(3);  
+    ll.add(2);  
+    ll.add(5);  
+    ll.add(6);  
+    ll.add(6);  
+    System.out.println(ll.size());
+    ll.addFirst(9);  //在头部增加9
+    ll.add(3, 10);   //将10插入到第四个元素，四以及后续的元素往后挪动
+    ll.remove(3);    //将第四个元素删除
+
+    LinkedList&lt;Integer&gt; list = new LinkedList&lt;Integer&gt;();
+    for (int i=0; i&lt;100000; i++)
+    {
+        list.add(i);
+    }
+    traverseByIterator(list);
+    traverseByIndex(list);
+    traverseByFor(list);    
+
+}
+
+public static void traverseByIterator(LinkedList&lt;Integer&gt; list)
+{
+    long startTime = System.nanoTime();
+    System.out.println(&quot;============迭代器遍历==============&quot;); 
+    Iterator&lt;Integer&gt; iter1 = list.iterator();  
+    while(iter1.hasNext()){  
+        iter1.next();  
+    }
+    long endTime = System.nanoTime();
+    long duration = endTime - startTime;
+    System.out.println(duration + &quot;纳秒&quot;);
+}
+public static void traverseByIndex(LinkedList&lt;Integer&gt; list)
+{
+    long startTime = System.nanoTime();
+    System.out.println(&quot;============随机索引值遍历==============&quot;); 
+    for(int i=0;i&lt;list.size();i++)
+    {
+        list.get(i);
+    }
+    long endTime = System.nanoTime();
+    long duration = endTime - startTime;
+    System.out.println(duration + &quot;纳秒&quot;);
+}
+public static void traverseByFor(LinkedList&lt;Integer&gt; list)
+{
+    long startTime = System.nanoTime();
+    System.out.println(&quot;============for循环遍历==============&quot;); 
+    for(Integer item : list)
+    {
+        ;
+    }
+    long endTime = System.nanoTime();
+    long duration = endTime - startTime;
+    System.out.println(duration + &quot;纳秒&quot;);
+}</code></pre><p>}<br>//遍历效率：foreach&gt;iterator&gt;索引位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#### Vector(同步)</span><br><span class="line">- 和 ArrayList 类似，可变数组实现的列表</span><br><span class="line">- Vector 同步，适合在多线程下使用</span><br><span class="line">- 原先不属于 JCF 框架，属于 Java 最早的数据结构，性能较差</span><br><span class="line">- 从 JDK1.2 开始， Vector 被重写，并纳入到 JCF</span><br><span class="line">- 官方文档建议在非同步情况下，优先采用 ArrayList</span><br><span class="line"></span><br><span class="line">### 4.集合</span><br><span class="line">确定性，互异性，无序性</span><br><span class="line"></span><br><span class="line">- HashSet  （基于散列函数的集合，无序，不支持同步）</span><br><span class="line">- TreeSet ( 基于树结构的集合，可排序的，不支持同步) )</span><br><span class="line">- LinkedHashSet( 基于散列函数和双向链表的集合，可排序的，不</span><br><span class="line">支持同步) )</span><br><span class="line"></span><br><span class="line">#### HashSet</span><br><span class="line">- 基于 HashMap 实现的，可以容纳 null 元素,  不支持同步</span><br><span class="line">`Set s = Collections.synchronizedSet(new HashSet(...));`</span><br><span class="line">- add 添加一个元素</span><br><span class="line">- clear  清除整个 HashSet</span><br><span class="line">- contains  判定是否包含一个元素</span><br><span class="line">- remove  删除一个元素 </span><br><span class="line">- size  大小</span><br><span class="line">- retainAll</span><br></pre></td></tr></table></figure>
+
+<p>import java.util.ArrayList;<br>import java.util.HashSet;<br>import java.util.Iterator;</p>
+<p>public class HashSetTest {<br>    public static void main(String[] args) {<br>        HashSet<integer> hs = new HashSet<integer>();<br>        hs.add(null);<br>        hs.add(1000);<br>        hs.add(20);<br>        hs.add(3);<br>        hs.add(40000);<br>        hs.add(5000000);<br>        hs.add(3);                      //3 重复<br>        hs.add(null);                   //null重复<br>        System.out.println(hs.size());  //6<br>        if(!hs.contains(6))<br>        {<br>            hs.add(6);<br>        }<br>        System.out.println(hs.size());  //7<br>        hs.remove(4);<br>        System.out.println(hs.size());  //6<br>        //hs.clear();<br>        //System.out.println(hs.size());  //0</integer></integer></p>
+<pre><code>    System.out.println(&quot;============for循环遍历==============&quot;); 
+    for(Integer item : hs)
+    {
+        System.out.println(item);
+    }
+
+    System.out.println(&quot;============测试集合交集==============&quot;);
+
+    HashSet&lt;String&gt; set1 = new HashSet&lt;String&gt;();
+    HashSet&lt;String&gt; set2 = new HashSet&lt;String&gt;();
+
+    set1.add(&quot;a&quot;);
+    set1.add(&quot;b&quot;);
+    set1.add(&quot;c&quot;);
+
+    set2.add(&quot;c&quot;);
+    set2.add(&quot;d&quot;);
+    set2.add(&quot;e&quot;);
+
+    //交集
+    set1.retainAll(set2);
+    System.out.println(&quot;交集是 &quot;+set1);
+
+    System.out.println(&quot;============测试多种遍历方法速度==============&quot;);
+
+    HashSet&lt;Integer&gt; hs2 = new HashSet&lt;Integer&gt;();
+    for(int i=0;i&lt;100000;i++)    {
+        hs2.add(i);
+    }
+    traverseByIterator(hs2);
+    traverseByFor(hs2);        
+}
+
+public static void traverseByIterator(HashSet&lt;Integer&gt; hs)
+{
+    long startTime = System.nanoTime();
+    System.out.println(&quot;============迭代器遍历==============&quot;); 
+    Iterator&lt;Integer&gt; iter1 = hs.iterator();  
+    while(iter1.hasNext()){  
+        iter1.next();  
+    }
+    long endTime = System.nanoTime();
+    long duration = endTime - startTime;
+    System.out.println(duration + &quot;纳秒&quot;);
+}
+public static void traverseByFor(HashSet&lt;Integer&gt; hs)
+{
+    long startTime = System.nanoTime();
+    System.out.println(&quot;============for循环遍历==============&quot;); 
+    for(Integer item : hs)
+    {
+        ;
+    }
+    long endTime = System.nanoTime();
+    long duration = endTime - startTime;
+    System.out.println(duration + &quot;纳秒&quot;);
+}</code></pre><p>}<br>遍历顺序：for-each&gt;Iterator<br>```</p>
+<h4 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h4><ul>
+<li>继承 HashSet ，也是基于 HashMap 实现的，可以容纳 null 元素</li>
+<li>不支持同步<br><code>Set s = Collections.synchronizedSet(new LinkedHashSet(...));</code></li>
+<li>方法和 HashSet 基本一致<br><code>add, clear, contains, remove, size</code></li>
+<li>通过一个双向链表维护插入顺序</li>
+</ul>
+<h4 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h4><ul>
+<li>基于 TreeMap 实现的， 不可以容纳 null 元素， 不支持同步<br><code>SortedSet s = Collections.synchronizedSortedSet(new TreeSet(...));</code></li>
+<li>add 添加一个元素</li>
+<li>clear  清除整个 TreeSet</li>
+<li>contains  判定是否包含一个元素<br>– remove  删除一个元素 size  大小</li>
+<li>根据 compareTo 方法或指定 Comparator<h3 id="5-映射Map"><a href="#5-映射Map" class="headerlink" title="5. 映射Map"></a>5. 映射Map</h3>Java 中 Map</li>
+<li>Hashtable （同步，慢，数据量小）</li>
+<li>HashMap （不支持同步，快，数据量大）</li>
+<li>Properties (同步，文件形式，数据量小) <h4 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h4></li>
+<li>K-V对，K和V都不允许为 null</li>
+<li>同步，多线程安全</li>
+<li>无序的</li>
+<li>适合小数据量</li>
+<li>主要方法： clear, contains/containsValue, containsKey, get,<br>put,remove, size</li>
+</ul>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><ul>
+<li>K-V对，K和V都允许为 null</li>
+<li>不同步，多线程不安全<ul>
+<li>Map m = Collections.synchronizedMap(new HashMap(…));可以使其同步</li>
+</ul>
+</li>
+<li>无序的</li>
+<li>主要方法： clear, containsValue, containsKey, get, put,remove, size</li>
+<li>通过a HashMapTest.java <h4 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h4></li>
+<li>基于双向链表的维持插入顺序的 HashMap<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4></li>
+<li>基于红黑树的 Map ，可以根据 key 的自然排序或者 compareTo 方法<br>进行排序输出<h4 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h4></li>
+<li>继承于 Hashtable</li>
+<li>可以将K K- -V V 对保存在文件中</li>
+<li>适用于数据量少的配置文件</li>
+<li>继承自 Hashtable 的方法： clear, contains/containsValue, containsKey,<br>get, put,remove, size</li>
+<li>从文件加载的 load 方法，  写入到文件中的 store 方法</li>
+<li>获取属性  getProperty  ，设置属性 setProperty<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4></li>
+<li>HashMap 是最常用的映射结构</li>
+<li>如需要排序，考虑 LinkedHashMap 和 TreeMap</li>
+<li>如需要将K K- -V V 存储为文件，可采用 Properties 类<h3 id="6-JCF工具类"><a href="#6-JCF工具类" class="headerlink" title="6.JCF工具类"></a>6.JCF工具类</h3></li>
+<li>不存储数据，而是在数据容器上，实现高效操作<ul>
+<li>排序</li>
+<li>搜索</li>
+</ul>
+</li>
+<li>Arrays 类</li>
+<li>Collections 类</li>
+</ul>
+<h4 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h4><ul>
+<li>Arrays ：处理对象是数组<ul>
+<li>排序：对数组排序 , sort/ parallelSort 。</li>
+<li>查找：从数组中查找一个元素,  binarySearch 。</li>
+<li>批量拷贝：从源数组批量复制元素到目标数组,  copyOf 。</li>
+<li>批量赋值：对数组进行批量赋值 , fill 。</li>
+<li>等价性比较：判定两个数组内容是否相同 , equals 。</li>
+</ul>
+</li>
+</ul>
+<h4 id="包装器类"><a href="#包装器类" class="headerlink" title="包装器类"></a>包装器类</h4><ul>
+<li>Collections:  处理对象是  Collection 及其子类<ul>
+<li>排序：对 List 进行排序， sort 。</li>
+<li>搜索：从 List 中搜索元素， binarySearch</li>
+<li>批量赋值：对 List 批量赋值， fill 。</li>
+<li>最大、最小：查找集合中最大/ / 小值， max ， min</li>
+<li>反序：将List反序排列， reverse</li>
+</ul>
+</li>
+</ul>
+<h4 id="对象比较"><a href="#对象比较" class="headerlink" title="对象比较"></a>对象比较</h4><ul>
+<li>对象实现 Comparable 接口（需要修改对象类）<ul>
+<li>compareTo 方法<br>大于返回1， == 返回0，&lt;返回-1</li>
+<li>Arrays 和 Collections 在进行对象 sort 时，自动调用该方法</li>
+</ul>
+</li>
+<li>新建 Comparator （适用于对象类不可更改的情况）<ul>
+<li>compare 方法<br>大于返回1，== 返回0，&lt; &lt; 返回-1</li>
+<li>Comparator 比较器将作为参数提交给工具类的 sort 方法</li>
+</ul>
+</li>
+</ul>
+<h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><ul>
+<li>Arrays 和 Collections 功能强大，不需要重复造轮子</li>
+<li>对象比较方法Comparable/Comparator</li>
+</ul>
+</div><div class="tags"><a href="/tags/java/">java</a></div><div class="post-nav"><a class="pre" href="/2019/07/11/Axios/">Axios</a><a class="next" href="/2019/07/11/odoo学习/">Odoo学习</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/github-page/">github page</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaweb/">javaweb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/odoo/">odoo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小程序/">小程序</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/SpringMVC/" style="font-size: 15px;">SpringMVC</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/javaweb/" style="font-size: 15px;">javaweb</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/axios/" style="font-size: 15px;">axios</a> <a href="/tags/小程序/" style="font-size: 15px;">小程序</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/odoo-web-python/" style="font-size: 15px;">odoo web python</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/SpringBoot/" style="font-size: 15px;">SpringBoot</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/07/sql语句/">sql语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/02/局部类/">局部类</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/01/计算机网络/">计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/30/Java基础/">Java基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/29/TCP_IP/">TCP_IP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/面试题零碎知识点/">面试题零碎知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/25/排序/">排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/24/剑指offer/">剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/sql/">sql</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/Mysql索引底层实现/">Mysql索引底层实现</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">香蕉弦定李.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
