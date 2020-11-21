@@ -1,0 +1,284 @@
+	<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>linux常用命令 | Lichord</title>
+  <meta name="author" content="Lichord">
+  
+  <meta name="description" content="cal 12 2019 日历
+pwd 显示当前所在文件夹
+cd / 切换到根目录 也可以切换到别的目录
+cd .. 退回到下一个文件夹
+cd 切换到用户主目录
+ls 当前文件夹下面有什么文件
+ls -l 当前文件夹下面文件极其详细信息
+clear清空屏幕
+mkdir hello创建一个名为hello">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="linux常用命令">
+  <meta property="og:site_name" content="Lichord">
+
+  
+  
+		<!-- favicon -->
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#009688">
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+		<meta name="theme-color" content="#009688">
+		<!-- favicon end -->
+    <!-- <link href="/favicon.ico" rel="icon"> -->
+  
+
+  <!-- toc -->
+  <link rel="stylesheet" href="/libs/tocify/jquery.tocify.css" media="screen" type="text/css">
+
+  <!-- <link rel="stylesheet" href="/libs/bs/css/bootstrap.min.css" media="screen" type="text/css"> -->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" type="text/css">
+
+  <!-- material design -->
+	<!-- <link rel="stylesheet" href="/libs/bs-material/css/ripples.min.css" media="screen" type="text/css"> -->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/ripples.min.css" media="screen" type="text/css">
+  <!-- <link rel="stylesheet" href="/libs/bs-material/css/material.min.css" media="screen" type="text/css"> -->
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/material.min.css" media="screen" type="text/css">
+
+  <link rel="stylesheet" href="/css/highlight.light.css" media="screen" type="text/css">
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+  
+
+  
+
+  <script src="//apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/libs/jquery-2.0.3.min.js" type="text/javascript"><\/script>')</script>
+
+</head>
+</html>
+ 	<body>
+	  <nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">菜单</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Lichord</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/" title="">
+                    <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/archives" title="">
+                    <i class="fa fa-list"></i>存档
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="">
+                    <i class="fa fa-info-circle"></i>关于
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+	  <div class="container" >
+	    <div class="row">
+	
+	<div class="col-md-9 center-content">
+	
+
+		<div class="content">
+			<!-- index -->
+		   
+
+			  		<h2>linux常用命令</h2>
+					
+					<div>
+						<span class="post-time">2019-07-22 19:29:51</span>
+					</div>	
+					
+
+					<div class="article-content">
+						<ul>
+<li>cal 12 2019 日历</li>
+<li>pwd 显示当前所在文件夹</li>
+<li>cd / 切换到根目录 也可以切换到别的目录</li>
+<li>cd .. 退回到下一个文件夹</li>
+<li>cd 切换到用户主目录</li>
+<li>ls 当前文件夹下面有什么文件</li>
+<li>ls -l 当前文件夹下面文件极其详细信息</li>
+<li>clear清空屏幕</li>
+<li>mkdir hello创建一个名为hello的文件夹</li>
+<li>mkdir -p dir1/dir2/dir3/ 使用-p选项可以创建一个路径上所有不存在的目录</li>
+<li>rmdir hello/ 移除文件夹</li>
+<li>cp a.txt file.txt 复制a.txt 再生成file.txt</li>
+<li>cat sym.txt 查看文件所有内容</li>
+<li>less sym.txt文件太长的时候可以翻页查看，点击q退出这个查看模式</li>
+<li>diff sym.txt file2.txt 查看两个文件的不同的地方</li>
+<li>head sum.txt -n 6  看文件前面6行</li>
+<li>tail sum.txt -n 6  看文件最后面6行</li>
+<li>wc sym.txt<ul>
+<li>输出：178 225 1836 sym.txt</li>
+<li>表示：sym.txt文件一共178行，有225个单词，1836个字节</li>
+</ul>
+</li>
+<li>wc -w sym.txt 看有多少个单词</li>
+<li>wc -l sym.txt 看有多少行</li>
+<li>wc -c sym.txt 看有多少字节</li>
+<li>rm file2.txt 删除文件(慎用)</li>
+<li>mv file1.txt a.txt 将file1.txt改名成a.txt</li>
+<li>mv hi.txt bye/将hi.txt移动到bye文件夹下</li>
+<li>zip program.zip * 将文件夹下所有文件压缩成program.zip</li>
+<li>zip workspace.zip -r workspace/*把workspace下所有东西做成压缩包，-r表示把文件夹的子文件夹也一层一层打包</li>
+<li>tar -zcvf file.tar.gz wo/ 压缩wo文件夹</li>
+<li>tar -zxvf file.tar.gz 解压</li>
+<li>tar -tvf file.tar 查看tar文件</li>
+<li>unzip workspace.zip</li>
+</ul>
+<h3 id="wget-下载文件"><a href="#wget-下载文件" class="headerlink" title="wget 下载文件"></a>wget 下载文件</h3><ul>
+<li>wget 网址 //下载这个网址的内容</li>
+<li>wget 网址 -O newname.tar.gz//下载这个网址的文件并重命名<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz</span><br><span class="line"></span><br><span class="line">$ wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="ping-ping一个远程主机，只发5个数据包"><a href="#ping-ping一个远程主机，只发5个数据包" class="headerlink" title="ping ping一个远程主机，只发5个数据包"></a>ping ping一个远程主机，只发5个数据包</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ping -c 5 gmail.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="ifconfig-用于查看和配置Linux系统的网络接口"><a href="#ifconfig-用于查看和配置Linux系统的网络接口" class="headerlink" title="ifconfig 用于查看和配置Linux系统的网络接口"></a>ifconfig 用于查看和配置Linux系统的网络接口</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看所有网络接口及其状态</span></span><br><span class="line">$ ifconfig -a</span><br><span class="line"><span class="comment">#使用up和down命令启动或停止某个接口</span></span><br><span class="line">$ ifconfig eth0 up</span><br><span class="line">$ ifconfig eth0 down</span><br></pre></td></tr></table></figure>
+
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">netstat 查看网络连接情况</span><br><span class="line">netstat -i 显示网卡运行情况</span><br><span class="line">netstat -r 查看主句的路由列表</span><br><span class="line"></span><br><span class="line">netstat -an 查看当前系统端口使用情况</span><br></pre></td></tr></table></figure>
+
+<h3 id="service"><a href="#service" class="headerlink" title="service"></a>service</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#重启网卡</span></span><br><span class="line">service network restart</span><br><span class="line"><span class="comment"># 关闭网卡</span></span><br><span class="line">ifdown eth0</span><br><span class="line"><span class="comment">#开启网卡</span></span><br><span class="line">ifup eth0</span><br></pre></td></tr></table></figure>
+
+<h3 id="hostname"><a href="#hostname" class="headerlink" title="hostname"></a>hostname</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostname 显示主机名</span><br><span class="line">hostname -i 显示当前主机名的IP</span><br></pre></td></tr></table></figure>
+
+<h3 id="ps命令用于显示正在运行中的进程的信息"><a href="#ps命令用于显示正在运行中的进程的信息" class="headerlink" title="ps命令用于显示正在运行中的进程的信息"></a>ps命令用于显示正在运行中的进程的信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">查看当前正在运行的所有进程</span><br><span class="line"></span><br><span class="line">$ ps -ef | more</span><br><span class="line">以树状结构显示当前正在运行的进程，H选项表示显示进程的层次结构</span><br><span class="line">$ ps -efH | more</span><br><span class="line"></span><br><span class="line">ps aux|grep java </span><br><span class="line"><span class="comment">#查看java进程</span></span><br><span class="line"></span><br><span class="line">ps aux </span><br><span class="line"><span class="comment">#查看所有进程</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="kill-终止进程"><a href="#kill-终止进程" class="headerlink" title="kill 终止进程"></a>kill 终止进程</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#kill用于终止一个进程。一般我们会先用ps -ef查找某个进程得到它的进程号，然后再使用kill -9 进程号终止该进程。你还可以使用killall、pkill、xkill来终止进程</span></span><br><span class="line"></span><br><span class="line">$ ps -ef | grep vim</span><br><span class="line">ramesh    7243  7222  9 22:43 pts/2    00:00:00 vim</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">kill</span> -9 7243</span><br></pre></td></tr></table></figure>
+
+<h3 id="date-显示时间"><a href="#date-显示时间" class="headerlink" title="date 显示时间"></a>date 显示时间</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改系统日期</span></span><br><span class="line">date -s <span class="string">"01/31/2010 23:59:53"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="chmod权限管理："><a href="#chmod权限管理：" class="headerlink" title="chmod权限管理："></a>chmod权限管理：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">linux下的三种不同用户，分别是u,g,o代表作者，小组，其他人；每种用户的权限都有三种r,w,x，分别是可读可写运行</span><br><span class="line"></span><br><span class="line">ls  -l查看文件或者文件夹的详情时</span><br><span class="line">输出：-rm-r--r-- </span><br><span class="line">-开头表示这是文件，d开头的话表示是目录，用户可读可写，小组成员其他人可读</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>chmod  u-r hello.txt将作者的权限减去可读</li>
+<li>chmod u+r hello.txt为作者增加可读权限</li>
+<li>chmod go-r 小组，其他人都不可读<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">权限可以用二进制表示，1有权限，0无权限</span><br><span class="line"></span><br><span class="line">r w x</span><br><span class="line"></span><br><span class="line">1 1 0</span><br><span class="line"></span><br><span class="line">可读可写不可运行，十进制等于6</span><br><span class="line"></span><br><span class="line">chmod 644 hello.txt 作者可读可写，小组，其他人可读</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="grep-结合正则表达式在文件中查找字符串"><a href="#grep-结合正则表达式在文件中查找字符串" class="headerlink" title="grep 结合正则表达式在文件中查找字符串"></a>grep 结合正则表达式在文件中查找字符串</h3><ul>
+<li><code>grep en hello.txt</code> 显示hello.txt里面包含en这个字符串的所有单词。en这个位置可以用其他正则表达式代替</li>
+<li><code>grep l* hello.txt</code>查找所有l出现0-n次的单词</li>
+<li><code>grep ll* hello.txt</code>查找所有l出现1-n次的单词</li>
+<li><code>grep ^H hello.txt</code>查找以H开头的单词</li>
+<li><code>grep H.ll hello.txt</code> .表示任意字母</li>
+<li><code>grep [Hh].ll hello.txt</code> []里面的H,h任选一个</li>
+<li><code>grep [A-Za-z]ill hello.txt</code> 任意字母</li>
+<li><code>grep [A-Za-z]ill hello.txt | wc</code> 把输出的所有内容放在wc中进行统计<ul>
+<li>输出：19 29 224</li>
+<li>表示：19行，29个单词，224字符</li>
+</ul>
+</li>
+</ul>
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查找指定文件名的文件(不区分大小写)</span></span><br><span class="line"></span><br><span class="line">$ find -iname <span class="string">"MyProgram.c"</span></span><br><span class="line"><span class="comment">#对找到的文件执行某个命令</span></span><br><span class="line"></span><br><span class="line">$ find -iname <span class="string">"MyProgram.c"</span> -<span class="built_in">exec</span> md5sum &#123;&#125; \;</span><br><span class="line"><span class="comment">#查找home目录下的所有空文件</span></span><br><span class="line"></span><br><span class="line">$ find ~ -empty</span><br></pre></td></tr></table></figure>
+
+<h3 id="export-输出跟字符串oracle匹配的环境变量"><a href="#export-输出跟字符串oracle匹配的环境变量" class="headerlink" title="export 输出跟字符串oracle匹配的环境变量"></a>export 输出跟字符串oracle匹配的环境变量</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> | grep ORCALE</span><br><span class="line"><span class="built_in">declare</span> -x ORACLE_BASE=<span class="string">"/u01/app/oracle"</span></span><br><span class="line"><span class="built_in">declare</span> -x ORACLE_HOME=<span class="string">"/u01/app/oracle/product/10.2.0"</span></span><br><span class="line"><span class="built_in">declare</span> -x ORACLE_SID=<span class="string">"med"</span></span><br><span class="line"><span class="built_in">declare</span> -x ORACLE_TERM=<span class="string">"xterm"</span></span><br><span class="line"><span class="comment">#设置全局环境变量</span></span><br><span class="line">$ <span class="built_in">export</span> ORACLE_HOME=/u01/app/oracle/product/10.2.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="重定向符号-gt"><a href="#重定向符号-gt" class="headerlink" title="重定向符号 &gt;"></a>重定向符号 &gt;</h3><p><code>ls &gt; 1.txt</code></p>
+<p>将本来会在shell输出的内容，就是当前文件夹下的文件信息，放在1.txt文件中</p>
+<h3 id="whatis-显示某个命令的描述信息"><a href="#whatis-显示某个命令的描述信息" class="headerlink" title="whatis 显示某个命令的描述信息"></a>whatis 显示某个命令的描述信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whatis ls</span><br><span class="line">ls		(1)  - list directory contents</span><br></pre></td></tr></table></figure>
+
+<h3 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当你不知道某个命令的位置时可以使用whereis命令，下面使用whereis查找ls的位置</span></span><br><span class="line">$ whereis ls</span><br><span class="line">ls: /bin/ls /usr/share/man/man1/ls.1.gz /usr/share/man/man1p/ls.1p.gz</span><br><span class="line"><span class="comment">#当你想查找某个可执行程序的位置，但这个程序又不在whereis的默认目录下，你可以使用-B选项，并指定目录作为这个选项的参数。下面的命令在/tmp目录下查找lsmk命令</span></span><br><span class="line">$ whereis -u -B /tmp -f lsmk</span><br><span class="line">lsmk: /tmp/lsmk</span><br></pre></td></tr></table></figure>
+
+<h3 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h3><p>uname可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ uname -a</span><br><span class="line">Linux john-laptop 2.6.32-24-generic<span class="comment"># 41-Ubuntu SMP Thu Aug 19 01:12:52 UTC 2010 i686 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="vim编辑器"><a href="#vim编辑器" class="headerlink" title="vim编辑器"></a>vim编辑器</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yy 复制一行数据</span><br><span class="line"><span class="keyword">pp</span> 粘贴</span><br><span class="line">dd 剪切</span><br></pre></td></tr></table></figure>
+
+<h3 id="rpm安装软件包"><a href="#rpm安装软件包" class="headerlink" title="rpm安装软件包"></a>rpm安装软件包</h3><h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#连接一个远程数据库，需要输入密码</span></span><br><span class="line">$ mysql -u root -p -h 192.168.1.2</span><br><span class="line"><span class="comment">#连接本地数据库</span></span><br><span class="line">$ mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://gywbd.github.io/posts/2014/8/50-linux-commands.html" target="_blank" rel="noopener">http://gywbd.github.io/posts/2014/8/50-linux-commands.html</a></p>
+<p><a href="https://blog.csdn.net/bieleyang/article/details/76665022" target="_blank" rel="noopener">https://blog.csdn.net/bieleyang/article/details/76665022</a></p>
+<p><a href="https://www.hollischuang.com/archives/800" target="_blank" rel="noopener">https://www.hollischuang.com/archives/800</a></p>
+<p><a href="https://segmentfault.com/a/1190000015497396" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015497396</a></p>
+
+					</div>
+
+			  <!-- about -->
+			  
+		</div>
+
+		<!-- pagination -->
+	  
+
+		<div class="comment-section">
+  
+  
+
+
+</div>
+	</div>
+
+	
+
+</div>
+
+
+		<footer>
+			
+
+<p>
+  由 <a href="https://hexo.io">hexo</a> 强力驱动 | 搭载 <a href="https://github.com/wayou/hexo-theme-material">material</a> 主题
+</p>
+<p>
+  &copy; 2020 <a href="http://yoursite.com"> Lichord </a>
+</p>
+<a id="gotop" href="#" title="back to top"><i class="mdi-hardware-keyboard-arrow-up"></i></a>
+
+		</footer>
+	  </div>
+
+		<!-- <script src="/libs/bs/js/bootstrap.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script>(typeof $().modal == 'function')|| document.write('<script src="/libs/bs/js/bootstrap.min.js" type="text/javascript"><\/script>')</script>
+
+		<!-- material design -->
+		<!-- <script src="/libs/bs-material/js/ripples.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/ripples.min.js"></script>
+		<!-- <script src="/libs/bs-material/js/material.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/material.min.js"></script>
+		<!-- toc -->
+		<!-- <script src="/libs/tocify/jquery-ui.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script src="/libs/tocify/jquery.tocify.custom.js"></script>
+
+		<script src="/js/main.js"></script>
+
+	</body>
+</html>
