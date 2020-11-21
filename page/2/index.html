@@ -1,26 +1,318 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>香蕉弦定李 | 学习笔记</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">香蕉弦定李</h1><a id="logo" href="/.">香蕉弦定李</a><p class="description">学习笔记</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2019/07/12/sping ioc/">Spring IOC</a></h1><div class="post-meta">2019-07-12</div><div class="post-content"><p>Spring IOC概念及作用</p>
-<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
-<li>将创建对象的控制权放弃，交给工厂/框架，所以称为控制反转</li>
-<li>包括依赖注入和依赖查找<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4></li></ul></div><p class="readmore"><a href="/2019/07/12/sping ioc/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/07/05/Axios传递数据注意事项/">Axios传递数据注意事项</a></h1><div class="post-meta">2019-07-05</div><div class="post-content"><p>jQuery.ajax的post提交默认的请求头的Content-Type: application/x-www-form-urlencoded 。相当于(username=”admin”&amp;password=123)来传递数据（这是GET请求的固定格式）</p>
-<p>而axios.post提交的请求头是Content-Type: application/json。</p></div><p class="readmore"><a href="/2019/07/05/Axios传递数据注意事项/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/07/05/路由拦截/">路由拦截</a></h1><div class="post-meta">2019-07-05</div><div class="post-content"><p>定义路由的时候就需要多添加一个自定义字段requireAuth，用于判断该路由的访问是否需要登录。如果用户已经登录，则顺利进入路由，<br>否则就进入登录页面。</p>
-<pre><code>const routes = [
-    {
-        path: &apos;/repository&apos;,</code></pre></div><p class="readmore"><a href="/2019/07/05/路由拦截/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/07/04/odoo学习/">Odoo学习</a></h1><div class="post-meta">2019-07-04</div><div class="post-content"><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ul>
-<li><p>安装odoo和pycharm</p>
-</li>
-<li><p>windows:下载odoo的.exe文件按照默认指引安装就行，注意安装目录不能带有中文和空格，否则之后打开网页可能会报500 internal server error</p></li></ul></div><p class="readmore"><a href="/2019/07/04/odoo学习/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/07/03/vscode/">VS code 使用</a></h1><div class="post-meta">2019-07-03</div><div class="post-content"><ul>
-<li>预览Markdown:<ul>
-<li>ctrl+shift+p 选择Markdown open preview…</li>
-<li>ctrl+shift+v</li>
-</ul></li></ul></div><p class="readmore"><a href="/2019/07/03/vscode/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/07/03/IDEA快捷键/">IDEA常用快捷键</a></h1><div class="post-meta">2019-07-03</div><div class="post-content"><ul>
-<li>Ctrl+D 复制换行</li>
-<li>Ctrl+Alt+Enter 另起一行</li>
-<li>选中代码ctrl+alt+t 可以让代码被指定语句块包住</li>
-<li>Ctrl+N查找类</li></ul></div><p class="readmore"><a href="/2019/07/03/IDEA快捷键/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/07/03/IDEA使用问题/">IDEA使用问题</a></h1><div class="post-meta">2019-07-03</div><div class="post-content"><h4 id="打开软件时闪退"><a href="#打开软件时闪退" class="headerlink" title="打开软件时闪退"></a>打开软件时闪退</h4><ul>
-<li>插件不兼容导致：C:\Users\HASEE.IntelliJIdea2018.1\config\plugins文件夹下删除对应插件文件夹</li></ul></div><p class="readmore"><a href="/2019/07/03/IDEA使用问题/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/07/02/双系统安装记录/">双系统安装记录</a></h1><div class="post-meta">2019-07-02</div><div class="post-content"><p>目标：在装了win10的电脑上装个Ubuntu，并将C盘的软件迁移到其他非系统盘</p>
-<h3 id="情况"><a href="#情况" class="headerlink" title="情况"></a>情况</h3><p>win10的系统，笔记本一个只有250G的固态，剩余60G空间。只有一个C盘，担心哪天系统完蛋安装的软件数据都没了，毕竟那么多的开发工具要重装还是很费时。</p></div><p class="readmore"><a href="/2019/07/02/双系统安装记录/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/07/01/hexo+Github Page搭建博客/">hexo+github Page搭建博客与配置</a></h1><div class="post-meta">2019-07-01</div><div class="post-content"><p>前提：安装了Node.js,Git，注册github账号，并且创建了一个{githubname}.github.io的仓库</p>
-<h2 id="安装与配置Hexo"><a href="#安装与配置Hexo" class="headerlink" title="安装与配置Hexo"></a>安装与配置Hexo</h2><ul></ul></div><p class="readmore"><a href="/2019/07/01/hexo+Github Page搭建博客/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2019/04/05/Python数据分析与展示_6_图像手绘效果实例/">Python数据分析与展示_6_图像手绘效果实例</a></h1><div class="post-meta">2019-04-05</div><div class="post-content"><h4 id="PIL库"><a href="#PIL库" class="headerlink" title="PIL库"></a>PIL库</h4><ul>
-<li>PIL,Python Image Library,图像处理库<br><code>from PIL import Image</code><h3 id="图像的数组表示"><a href="#图像的数组表示" class="headerlink" title="图像的数组表示"></a>图像的数组表示</h3></li></ul></div><p class="readmore"><a href="/2019/04/05/Python数据分析与展示_6_图像手绘效果实例/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a></nav><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaweb/">javaweb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客配置/">博客配置</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/电脑/">电脑</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/数据分析/" style="font-size: 15px;">数据分析</a> <a href="/tags/计算机网络/" style="font-size: 15px;">计算机网络</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/vscode/" style="font-size: 15px;">vscode</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/odoo/" style="font-size: 15px;">odoo</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">香蕉弦定李.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+	<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>第 2 页 | Lichord</title>
+  <meta name="author" content="Lichord">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Lichord">
+
+  
+  
+		<!-- favicon -->
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#009688">
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+		<meta name="theme-color" content="#009688">
+		<!-- favicon end -->
+    <!-- <link href="/favicon.ico" rel="icon"> -->
+  
+
+  <!-- toc -->
+  <link rel="stylesheet" href="/libs/tocify/jquery.tocify.css" media="screen" type="text/css">
+
+  <!-- <link rel="stylesheet" href="/libs/bs/css/bootstrap.min.css" media="screen" type="text/css"> -->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" type="text/css">
+
+  <!-- material design -->
+	<!-- <link rel="stylesheet" href="/libs/bs-material/css/ripples.min.css" media="screen" type="text/css"> -->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/ripples.min.css" media="screen" type="text/css">
+  <!-- <link rel="stylesheet" href="/libs/bs-material/css/material.min.css" media="screen" type="text/css"> -->
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/material.min.css" media="screen" type="text/css">
+
+  <link rel="stylesheet" href="/css/highlight.light.css" media="screen" type="text/css">
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+  
+
+  
+
+  <script src="//apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/libs/jquery-2.0.3.min.js" type="text/javascript"><\/script>')</script>
+
+</head>
+</html>
+ 	<body>
+	  <nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">菜单</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Lichord</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/" title="">
+                    <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/archives" title="">
+                    <i class="fa fa-list"></i>存档
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="">
+                    <i class="fa fa-info-circle"></i>关于
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/atom.xml" title="这是一个订阅源">
+                    <i class="fa fa-rss"></i>RSS
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+	  <div class="container" >
+	    <div class="row">
+	
+	<div class="col-md-9">
+	
+
+		<div class="content">
+			<!-- index -->
+		   
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/07/03/vscode/">VS code 使用</a>
+		              </h3>
+									<span class="post-time">2019-07-03</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/07/03/IDEA快捷键/">IDEA常用快捷键</a>
+		              </h3>
+									<span class="post-time">2019-07-03</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/07/03/IDEA使用问题/">IDEA使用问题</a>
+		              </h3>
+									<span class="post-time">2019-07-03</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/07/02/双系统安装记录/">双系统安装记录</a>
+		              </h3>
+									<span class="post-time">2019-07-02</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/07/01/hexo+Github Page搭建博客/">hexo+github Page搭建博客与配置</a>
+		              </h3>
+									<span class="post-time">2019-07-01</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/04/05/Python数据分析与展示_6_图像手绘效果实例/">Python数据分析与展示_6_图像手绘效果实例</a>
+		              </h3>
+									<span class="post-time">2019-04-05</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/04/04/Python数据分析与展示_5_Pandas数据特征分析/">Python数据分析与展示_5_Pandas数据特征分析</a>
+		              </h3>
+									<span class="post-time">2019-04-04</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/04/03/Python数据分析与展示_4_Pandas库入门/">Python数据分析与展示_4_Pandas库入门</a>
+		              </h3>
+									<span class="post-time">2019-04-03</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/04/02/Python数据分析与展示_3_Numpy数据存取与函数/">Python数据分析与展示_3_Numpy数据存取与函数</a>
+		              </h3>
+									<span class="post-time">2019-04-02</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+		            <div class="index-item-wrapper">
+		              <h3>
+		                <a class="post-title" href="/2019/04/01/Python数据分析与展示_2_Numpy库入门/">Python数据分析与展示_2_Numpy库入门</a>
+		              </h3>
+									<span class="post-time">2019-04-01</span>
+		              <div class="excerpt"></div>
+		              
+		            </div>
+				
+				<!-- archives -->
+			  
+		</div>
+
+		<!-- pagination -->
+	  
+
+			<div class="btn-group btn-group-justified">
+				
+
+					<a class="btn btn-default " href="/" >上一页</a>
+
+					<a class="btn btn-default" href="/">首页</a>
+
+					<a class="btn btn-default " href="/page/3/" >下一页</a>
+
+	    	
+			</div>
+	  
+
+		<div class="comment-section">
+  
+
+</div>
+	</div>
+
+	
+		<div class="col-md-3">
+			<div id="sidebar">
+		</div>
+			
+					
+<div class="widget">
+  <h4>最新文章</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2020/03/23/内存溢出内存泄露/"  > <i class="mdi-editor-insert-drive-file"></i></a>
+      </li>
+    
+      <li>
+        <a href="/2019/10/22/java_容器_List/"  > <i class="mdi-editor-insert-drive-file"></i>Java_容器_List</a>
+      </li>
+    
+      <li>
+        <a href="/2019/07/22/shell编程/"  > <i class="mdi-editor-insert-drive-file"></i>shell编程简单语法</a>
+      </li>
+    
+      <li>
+        <a href="/2019/07/22/linux常用命令/"  > <i class="mdi-editor-insert-drive-file"></i>linux常用命令</a>
+      </li>
+    
+      <li>
+        <a href="/2019/07/20/JVM内存管理机制/"  > <i class="mdi-editor-insert-drive-file"></i>JVM内存管理机制</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+				
+					
+<div class="widget">
+	<h4>链接</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li> <a href="http://www.github.com/wayou" title="码农之家" target="_blank"> <i class="mdi-action-launch"></i> GitHub</a></li>
+	
+		<li> <a href="http://www.weibo.com/liuwayong" title="twitter的本地化版本" target="_blank"> <i class="mdi-action-launch"></i> 微博</a></li>
+	
+	</ul>
+</div>
+
+
+				
+			</div>
+	
+
+</div>
+
+
+		<footer>
+			
+
+<p>
+  由 <a href="https://hexo.io">hexo</a> 强力驱动 | 搭载 <a href="https://github.com/wayou/hexo-theme-material">material</a> 主题
+</p>
+<p>
+  &copy; 2020 <a href="http://yoursite.com"> Lichord </a>
+</p>
+<a id="gotop" href="#" title="back to top"><i class="mdi-hardware-keyboard-arrow-up"></i></a>
+
+		</footer>
+	  </div>
+
+		<!-- <script src="/libs/bs/js/bootstrap.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script>(typeof $().modal == 'function')|| document.write('<script src="/libs/bs/js/bootstrap.min.js" type="text/javascript"><\/script>')</script>
+
+		<!-- material design -->
+		<!-- <script src="/libs/bs-material/js/ripples.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/ripples.min.js"></script>
+		<!-- <script src="/libs/bs-material/js/material.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/material.min.js"></script>
+		<!-- toc -->
+		<!-- <script src="/libs/tocify/jquery-ui.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script src="/libs/tocify/jquery.tocify.custom.js"></script>
+
+		<script src="/js/main.js"></script>
+
+	</body>
+</html>
