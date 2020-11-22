@@ -1,133 +1,228 @@
-	<!DOCTYPE HTML>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一.类加载器虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。 类加载生命周期七阶段：  类加载：类加载器将class文件加载到虚拟机的内存 加载：在硬盘上查找并通过IO读入字节码文件 连接：执行校验，准备，解析（可选）步骤 校验：校验字节码文件">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM内存管理机制">
+<meta property="og:url" content="http://yoursite.com/2019/07/20/JVM内存管理机制/index.html">
+<meta property="og:site_name" content="Lichord">
+<meta property="og:description" content="一.类加载器虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。 类加载生命周期七阶段：  类加载：类加载器将class文件加载到虚拟机的内存 加载：在硬盘上查找并通过IO读入字节码文件 连接：执行校验，准备，解析（可选）步骤 校验：校验字节码文件">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/ryLpSeuxtmZoP2s.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/wHPonQv91lbFShC.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/23/OJPUeo3BRXri67q.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/ecRLpdh8Ha79NBZ.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/71D9UncIZ6gmsWB.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/hboJnAQ3DNS1qOP.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/Lphk5ys2lSqcACX.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/22/IePouqwTQhYmL7k.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/22/e715nxwStsTuajh.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/22/M4REXhwbDQusnLp.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/22/5IoE9temRSYJLTC.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/6Gad9kAsVNJ41zK.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/sYaTXpqd4xb1kDQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/wU4AcvQY5sKIil2.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/oSgCkBFuUNxT6id.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/21/b1XO9CJYjPHcyE7.png">
+<meta property="og:updated_time" content="2019-10-26T01:25:57.009Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM内存管理机制">
+<meta name="twitter:description" content="一.类加载器虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。 类加载生命周期七阶段：  类加载：类加载器将class文件加载到虚拟机的内存 加载：在硬盘上查找并通过IO读入字节码文件 连接：执行校验，准备，解析（可选）步骤 校验：校验字节码文件">
+<meta name="twitter:image" content="https://i.loli.net/2019/08/21/ryLpSeuxtmZoP2s.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2019/07/20/JVM内存管理机制/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
   <title>JVM内存管理机制 | Lichord</title>
-  <meta name="author" content="Lichord">
-  
-  <meta name="description" content="一.类加载器虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。
-类加载生命周期七阶段：
-
-类加载：类加载器将class文件加载到虚拟机的内存
-加载">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="JVM内存管理机制">
-  <meta property="og:site_name" content="Lichord">
-
-  
-  
-		<!-- favicon -->
-		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-		<link rel="manifest" href="/manifest.json">
-		<meta name="msapplication-TileColor" content="#009688">
-		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
-		<meta name="theme-color" content="#009688">
-		<!-- favicon end -->
-    <!-- <link href="/favicon.ico" rel="icon"> -->
   
 
-  <!-- toc -->
-  <link rel="stylesheet" href="/libs/tocify/jquery.tocify.css" media="screen" type="text/css">
 
-  <!-- <link rel="stylesheet" href="/libs/bs/css/bootstrap.min.css" media="screen" type="text/css"> -->
-  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" type="text/css">
 
-  <!-- material design -->
-	<!-- <link rel="stylesheet" href="/libs/bs-material/css/ripples.min.css" media="screen" type="text/css"> -->
-  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/ripples.min.css" media="screen" type="text/css">
-  <!-- <link rel="stylesheet" href="/libs/bs-material/css/material.min.css" media="screen" type="text/css"> -->
-	<link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/material.min.css" media="screen" type="text/css">
 
-  <link rel="stylesheet" href="/css/highlight.light.css" media="screen" type="text/css">
 
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 
-  
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-  
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-  <script src="//apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/libs/jquery-2.0.3.min.js" type="text/javascript"><\/script>')</script>
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
-</html>
- 	<body>
-	  <nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">菜单</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Lichord</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                
-                <li>
-                    <a href="/" title="">
-                    <i class="fa fa-home"></i>首页
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/archives" title="">
-                    <i class="fa fa-list"></i>存档
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/about" title="">
-                    <i class="fa fa-info-circle"></i>关于
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/atom.xml" title="这是一个订阅源">
-                    <i class="fa fa-rss"></i>RSS
-                    </a>
-                </li>
-                
-            </ul>
-        </div>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lichord</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习笔记</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
 </nav>
 
-	  <div class="container" >
-	    <div class="row">
-	
-	<div class="col-md-9 center-content">
-	
 
-		<div class="content">
-			<!-- index -->
-		   
 
-			  		<h2>JVM内存管理机制</h2>
-					
-					<div>
-						<span class="post-time">2019-07-20 20:29:51</span>
-					</div>	
-					
 
-					<div class="article-content">
-						<h3 id="一-类加载器"><a href="#一-类加载器" class="headerlink" title="一.类加载器"></a>一.类加载器</h3><p>虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块<br>称为“类加载器”。<br><img src="https://i.loli.net/2019/08/21/ryLpSeuxtmZoP2s.jpg" alt="类加载子系统.png"></p>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/20/JVM内存管理机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lichord">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lichord">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JVM内存管理机制
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-20 20:29:51" itemprop="dateCreated datePublished" datetime="2019-07-20T20:29:51+08:00">2019-07-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-26 09:25:57" itemprop="dateModified" datetime="2019-10-26T09:25:57+08:00">2019-10-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="一-类加载器"><a href="#一-类加载器" class="headerlink" title="一.类加载器"></a>一.类加载器</h3><p>虚拟机设计团队把类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块<br>称为“类加载器”。<br><img src="https://i.loli.net/2019/08/21/ryLpSeuxtmZoP2s.jpg" alt="类加载子系统.png"></p>
 <p>类加载生命周期七阶段：</p>
 <ul>
 <li>类加载：类加载器将class文件加载到虚拟机的内存</li>
@@ -303,57 +398,189 @@ Object()</code>这类的引用，只要强引用还存在，垃圾收集器永�
 </ul>
 <p>JVM内存模型与JMM（Java内存模型）不是一回事</p>
 
-					</div>
+    </div>
 
-			  <!-- about -->
-			  
-		</div>
+    
+    
+    
 
-		<!-- pagination -->
-	  
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
+          </div>
 
-		<div class="comment-section">
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/15/java移位运算符/" rel="prev" title="Java移位运算符">
+      <i class="fa fa-chevron-left"></i> Java移位运算符
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/07/22/linux常用命令/" rel="next" title="linux常用命令">
+      linux常用命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
   
+  
 
 
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-类加载器"><span class="nav-number">1.</span> <span class="nav-text">一.类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类与类加载器"><span class="nav-number">1.1.</span> <span class="nav-text">类与类加载器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见加载器"><span class="nav-number">1.2.</span> <span class="nav-text">常见加载器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双亲委托模型"><span class="nav-number">1.3.</span> <span class="nav-text">双亲委托模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#工作过程"><span class="nav-number">1.3.1.</span> <span class="nav-text">工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优点"><span class="nav-number">1.3.2.</span> <span class="nav-text">优点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义classLoader"><span class="nav-number">1.4.</span> <span class="nav-text">自定义classLoader</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要自定义类加载器"><span class="nav-number">1.4.1.</span> <span class="nav-text">为什么要自定义类加载器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#怎么定义"><span class="nav-number">1.4.2.</span> <span class="nav-text">怎么定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-运行时数据区"><span class="nav-number">2.</span> <span class="nav-text">二. 运行时数据区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-虚拟机栈"><span class="nav-number">2.1.</span> <span class="nav-text">1. 虚拟机栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-本地方法栈"><span class="nav-number">2.2.</span> <span class="nav-text">2. 本地方法栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-程序计数器"><span class="nav-number">2.3.</span> <span class="nav-text">3. 程序计数器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-方法区（线程共享）-非堆"><span class="nav-number">2.4.</span> <span class="nav-text">4. 方法区（线程共享）/非堆</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运行时常量池"><span class="nav-number">2.4.1.</span> <span class="nav-text">运行时常量池</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-堆"><span class="nav-number">2.5.</span> <span class="nav-text">5. 堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接内存"><span class="nav-number">2.6.</span> <span class="nav-text">直接内存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-HotSpot虚拟机对象揭秘"><span class="nav-number">3.</span> <span class="nav-text">三. HotSpot虚拟机对象揭秘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的创建"><span class="nav-number">3.1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">3.2.</span> <span class="nav-text">对象的内存布局</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#对象头"><span class="nav-number">3.2.1.</span> <span class="nav-text">对象头</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实例数据部分"><span class="nav-number">3.2.2.</span> <span class="nav-text">实例数据部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对齐填充"><span class="nav-number">3.2.3.</span> <span class="nav-text">对齐填充</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的访问"><span class="nav-number">3.3.</span> <span class="nav-text">对象的访问</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#句柄访问"><span class="nav-number">3.3.1.</span> <span class="nav-text">句柄访问</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接指针访问"><span class="nav-number">3.3.2.</span> <span class="nav-text">直接指针访问</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OutOfMemoryError异常"><span class="nav-number">4.</span> <span class="nav-text">OutOfMemoryError异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#堆溢出-Java-heap-space"><span class="nav-number">4.1.</span> <span class="nav-text">堆溢出 Java heap space</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集器与内存分配策略"><span class="nav-number"></span> <span class="nav-text">垃圾收集器与内存分配策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#判断对象是否存活"><span class="nav-number">1.</span> <span class="nav-text">判断对象是否存活</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-引用计数算法"><span class="nav-number">1.1.</span> <span class="nav-text">1. 引用计数算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-number">1.2.</span> <span class="nav-text">引用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#强引用"><span class="nav-number">1.2.1.</span> <span class="nav-text">强引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#软引用"><span class="nav-number">1.2.2.</span> <span class="nav-text">软引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#弱引用"><span class="nav-number">1.2.3.</span> <span class="nav-text">弱引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚引用"><span class="nav-number">1.2.4.</span> <span class="nav-text">虚引用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回收条件"><span class="nav-number">1.3.</span> <span class="nav-text">回收条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回收方法区"><span class="nav-number">2.</span> <span class="nav-text">回收方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收算法"><span class="nav-number">3.</span> <span class="nav-text">垃圾回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见回收器"><span class="nav-number">3.1.</span> <span class="nav-text">常见回收器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行引擎"><span class="nav-number">4.</span> <span class="nav-text">执行引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM性能优化"><span class="nav-number">5.</span> <span class="nav-text">JVM性能优化</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lichord</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-	</div>
-
-	
-
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
 </div>
 
 
-		<footer>
-			
 
-<p>
-  由 <a href="https://hexo.io">hexo</a> 强力驱动 | 搭载 <a href="https://github.com/wayou/hexo-theme-material">material</a> 主题
-</p>
-<p>
-  &copy; 2020 <a href="http://yoursite.com"> Lichord </a>
-</p>
-<a id="gotop" href="#" title="back to top"><i class="mdi-hardware-keyboard-arrow-up"></i></a>
+      </div>
 
-		</footer>
-	  </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
-		<!-- <script src="/libs/bs/js/bootstrap.min.js"></script> -->
-		<script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<script>(typeof $().modal == 'function')|| document.write('<script src="/libs/bs/js/bootstrap.min.js" type="text/javascript"><\/script>')</script>
 
-		<!-- material design -->
-		<!-- <script src="/libs/bs-material/js/ripples.min.js"></script> -->
-		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/ripples.min.js"></script>
-		<!-- <script src="/libs/bs-material/js/material.min.js"></script> -->
-		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/material.min.js"></script>
-		<!-- toc -->
-		<!-- <script src="/libs/tocify/jquery-ui.min.js"></script> -->
-		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-		<script src="/libs/tocify/jquery.tocify.custom.js"></script>
+      </div>
+    </main>
 
-		<script src="/js/main.js"></script>
+    <footer class="footer">
+      <div class="footer-inner">
+        
 
-	</body>
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lichord</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>
